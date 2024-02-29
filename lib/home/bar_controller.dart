@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+import 'account.dart';
 import 'home_page.dart';
 import 'statistics.dart';
 
@@ -40,6 +41,7 @@ class _BarControllerState extends State<BarController> {
             children: [
               HomePage(),
               StatisticsPage(),
+              AccountPage(),
             ],
           ),
           Positioned(
