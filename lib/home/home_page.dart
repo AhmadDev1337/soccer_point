@@ -130,48 +130,6 @@ class _HomePageState extends State<HomePage> {
         body: ListView(
           children: [
             Padding(
-              padding: EdgeInsets.only(left: 20, top: 10),
-              child: SingleChildScrollView(
-                physics: BouncingScrollPhysics(),
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: leagues.map((league) {
-                    return GestureDetector(
-                      onTap: () {},
-                      child: Container(
-                        padding: EdgeInsets.all(10),
-                        margin: const EdgeInsets.only(right: 10),
-                        decoration: BoxDecoration(
-                          color: Color(league["color"]),
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.asset(
-                              league["image"],
-                              width: 20,
-                              color: Colors.white,
-                            ),
-                            SizedBox(width: 5),
-                            Text(
-                              league["league"],
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 13,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    );
-                  }).toList(),
-                ),
-              ),
-            ),
-            Padding(
               padding: EdgeInsets.only(top: 20, left: 20, bottom: 10),
               child: Text(
                 "Live Match",
@@ -193,7 +151,7 @@ class _HomePageState extends State<HomePage> {
                     margin: EdgeInsets.all(10),
                     padding: EdgeInsets.all(10),
                     decoration: BoxDecoration(
-                      color: Color(league["color"] - 100),
+                      color: Color(league["color"]),
                       borderRadius: BorderRadius.circular(15),
                     ),
                     child: Stack(
