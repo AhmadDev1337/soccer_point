@@ -1,11 +1,9 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_element, unused_field
 
 import 'dart:convert';
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:http/http.dart' as http;
 
 class LiveMatch {
@@ -62,31 +60,12 @@ class _HomePageState extends State<HomePage> {
   List<LiveMatch> liveMatchList = [];
   List<Matchs> matchsList = [];
   bool isLoading = true;
-  BannerAd? _bannerAd;
-
-  void _loadBannerAd() {
-    _bannerAd = BannerAd(
-      adUnitId: 'ca-app-pub-8363980854824352/6462846234',
-      request: AdRequest(),
-      size: AdSize.mediumRectangle,
-      listener: BannerAdListener(
-        onAdLoaded: (Ad ad) {
-          log('Ad onAdLoaded');
-        },
-        onAdFailedToLoad: (Ad ad, LoadAdError err) {
-          log('Ad onAdFailedToLoad: ${err.message}');
-          ad.dispose();
-        },
-      ),
-    )..load();
-  }
 
   @override
   void initState() {
     super.initState();
     liveMatch();
     match();
-    _loadBannerAd();
   }
 
   Future<void> liveMatch() async {
@@ -123,7 +102,7 @@ class _HomePageState extends State<HomePage> {
         body: Container(
           child: Center(
             child: SpinKitWave(
-              color: Color.fromARGB(255, 241, 106, 53),
+              color: Color.fromARGB(255, 255, 13, 0),
               size: 25,
             ),
           ),
@@ -165,7 +144,7 @@ class _HomePageState extends State<HomePage> {
         body: Container(
           child: Center(
             child: SpinKitWave(
-              color: Color.fromARGB(255, 241, 106, 53),
+              color: Color.fromARGB(255, 255, 13, 0),
               size: 25,
             ),
           ),
@@ -205,7 +184,7 @@ class _HomePageState extends State<HomePage> {
         body: isLoading
             ? Center(
                 child: SpinKitWave(
-                  color: Color.fromARGB(255, 241, 106, 53),
+                  color: Color.fromARGB(255, 255, 13, 0),
                   size: 25,
                 ),
               )
@@ -229,12 +208,12 @@ class _HomePageState extends State<HomePage> {
                     child: Row(
                       children: liveMatchList.map((liveMatch) {
                         return Container(
-                          width: 230,
-                          height: MediaQuery.of(context).size.height * 0.2,
+                          width: MediaQuery.of(context).size.width * 0.8,
+                          height: 170,
                           margin: EdgeInsets.all(10),
                           padding: EdgeInsets.all(10),
                           decoration: BoxDecoration(
-                            color: Colors.transparent,
+                            color: Colors.grey,
                             borderRadius: BorderRadius.circular(15),
                           ),
                           child: Stack(
@@ -292,10 +271,7 @@ class _HomePageState extends State<HomePage> {
                                       liveMatch.score,
                                       style: TextStyle(
                                           color: Colors.white,
-                                          fontSize: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.06,
+                                          fontSize: 20,
                                           fontWeight: FontWeight.w800),
                                     ),
                                     Column(
@@ -341,7 +317,7 @@ class _HomePageState extends State<HomePage> {
                         Text(
                           "...",
                           style: TextStyle(
-                            color: Colors.deepOrange,
+                            color: Color.fromARGB(255, 255, 13, 0),
                             fontWeight: FontWeight.w900,
                             fontSize: 13,
                           ),
