@@ -1,6 +1,9 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class StatisticsPage extends StatefulWidget {
   const StatisticsPage({Key? key}) : super(key: key);
@@ -10,6 +13,31 @@ class StatisticsPage extends StatefulWidget {
 }
 
 class _StatisticsPageState extends State<StatisticsPage> {
+  BannerAd? _bannerAd;
+
+  void _loadBannerAd() {
+    _bannerAd = BannerAd(
+      adUnitId: 'ca-app-pub-8363980854824352/7160796335',
+      request: AdRequest(),
+      size: AdSize.mediumRectangle,
+      listener: BannerAdListener(
+        onAdLoaded: (Ad ad) {
+          log('Ad onAdLoaded');
+        },
+        onAdFailedToLoad: (Ad ad, LoadAdError err) {
+          log('Ad onAdFailedToLoad: ${err.message}');
+          ad.dispose();
+        },
+      ),
+    )..load();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _loadBannerAd();
+  }
+
   List<Map<String, dynamic>> statistics = [
     {
       "image1": "assets/images/images-removebg-preview (2).png",
@@ -107,6 +135,11 @@ class _StatisticsPageState extends State<StatisticsPage> {
                       color: Color(0xFF0d0d0d),
                     ),
                   ),
+                ),
+                Container(
+                  width: MediaQuery.of(context).size.width * 9,
+                  height: 50,
+                  child: AdWidget(ad: _bannerAd!),
                 ),
               ],
             );

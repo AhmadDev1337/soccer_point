@@ -1,6 +1,54 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_element, unused_field
 
+import 'dart:convert';
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:http/http.dart' as http;
+
+class LiveMatch {
+  final String image;
+  final String league;
+  final String week;
+  final String image1;
+  final String team1;
+  final String image2;
+  final String team2;
+  final String score;
+
+  LiveMatch({
+    required this.image,
+    required this.league,
+    required this.week,
+    required this.image1,
+    required this.team1,
+    required this.image2,
+    required this.team2,
+    required this.score,
+  });
+}
+
+class Matchs {
+  final String week;
+  final String image1;
+  final String team1;
+  final String image2;
+  final String team2;
+  final String date;
+  final String time;
+
+  Matchs({
+    required this.week,
+    required this.image1,
+    required this.team1,
+    required this.image2,
+    required this.team2,
+    required this.date,
+    required this.time,
+  });
+}
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -10,87 +58,121 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<Map<String, dynamic>> leagues = [
-    {
-      "image": "assets/images/laliga.png",
-      "league": "La Liga",
-      "week": "Week 10",
-      "image1": "assets/images/images-removebg-preview (2).png",
-      "team1": "Real Madrid",
-      "image2": "assets/images/barcelona.png",
-      "team2": "Barcelona",
-      "score": "4 : 1",
-      "color": 0xFFf72b91,
-    },
-    {
-      "image": "assets/images/images-removebg-preview (1).png",
-      "league": "Premier League",
-      "week": "Week 11",
-      "image1": "assets/images/mc.png",
-      "team1": "Man City",
-      "image2": "assets/images/mu.png",
-      "team2": "Man United",
-      "score": "4 : 1",
-      "color": 0xFF3f51b5,
-    },
-    {
-      "image": "assets/images/seriea.png",
-      "league": "Serie A",
-      "week": "Week 10",
-      "image1": "assets/images/mc.png",
-      "team1": "Man City",
-      "image2": "assets/images/mu.png",
-      "team2": "Man United",
-      "score": "4 : 1",
-      "color": 0xFF4caf50,
-    },
-    {
-      "image": "assets/images/seriea.png",
-      "league": "La Liga",
-      "week": "Week 10",
-      "image1": "assets/images/mc.png",
-      "team1": "Man City",
-      "image2": "assets/images/mu.png",
-      "team2": "Man City",
-      "score": "4 : 1",
-      "color": 0xFFff9800,
-    },
-  ];
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  List<LiveMatch> liveMatchList = [];
+  List<Matchs> matchsList = [];
+  bool isLoading = true;
+  BannerAd? _bannerAd;
 
-  List<Map<String, dynamic>> matchs = [
-    {
-      "image1": "assets/images/mc.png",
-      "name1": "Man City",
-      "image2": "assets/images/mu.png",
-      "name2": "Man United",
-      "date": "10 Oct",
-      "time": "06:00",
-    },
-    {
-      "image1": "assets/images/mc.png",
-      "name1": "Man City",
-      "image2": "assets/images/mu.png",
-      "name2": "Man United",
-      "date": "10 Oct",
-      "time": "06:00",
-    },
-    {
-      "image1": "assets/images/mc.png",
-      "name1": "Man City",
-      "image2": "assets/images/mu.png",
-      "name2": "Man United",
-      "date": "10 Oct",
-      "time": "06:00",
-    },
-    {
-      "image1": "assets/images/mc.png",
-      "name1": "Man City",
-      "image2": "assets/images/mu.png",
-      "name2": "Man United",
-      "date": "10 Oct",
-      "time": "06:00",
-    },
-  ];
+  void _loadBannerAd() {
+    _bannerAd = BannerAd(
+      adUnitId: 'ca-app-pub-8363980854824352/6462846234',
+      request: AdRequest(),
+      size: AdSize.mediumRectangle,
+      listener: BannerAdListener(
+        onAdLoaded: (Ad ad) {
+          log('Ad onAdLoaded');
+        },
+        onAdFailedToLoad: (Ad ad, LoadAdError err) {
+          log('Ad onAdFailedToLoad: ${err.message}');
+          ad.dispose();
+        },
+      ),
+    )..load();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    liveMatch();
+    match();
+    _loadBannerAd();
+  }
+
+  Future<void> liveMatch() async {
+    const singleJsonUrl = 'https://pastebin.com/raw/PitcFuGK';
+
+    try {
+      final response = await http.get(Uri.parse(singleJsonUrl));
+      if (response.statusCode == 200) {
+        final liveMatch = json.decode(response.body);
+        liveMatchList = liveMatch.map<LiveMatch>((data) {
+          return LiveMatch(
+            image: data['image'],
+            league: data['league'],
+            week: data['week'],
+            image1: data['image1'],
+            team1: data['team1'],
+            image2: data['image2'],
+            team2: data['team2'],
+            score: data['score'],
+          );
+        }).toList();
+
+        setState(() {
+          isLoading = false;
+        });
+      } else {
+        setState(() {
+          isLoading = false;
+        });
+      }
+    } catch (e) {
+      Scaffold(
+        backgroundColor: Colors.white,
+        body: Container(
+          child: Center(
+            child: SpinKitWave(
+              color: Color.fromARGB(255, 241, 106, 53),
+              size: 25,
+            ),
+          ),
+        ),
+      );
+    }
+  }
+
+  Future<void> match() async {
+    const singleJsonUrl = 'https://pastebin.com/raw/xaZxCKiG';
+
+    try {
+      final response = await http.get(Uri.parse(singleJsonUrl));
+      if (response.statusCode == 200) {
+        final matchs = json.decode(response.body);
+        matchsList = matchs.map<Matchs>((data) {
+          return Matchs(
+            week: data['week'],
+            image1: data['image1'],
+            team1: data['team1'],
+            image2: data['image2'],
+            team2: data['team2'],
+            date: data['date'],
+            time: data['time'],
+          );
+        }).toList();
+
+        setState(() {
+          isLoading = false;
+        });
+      } else {
+        setState(() {
+          isLoading = false;
+        });
+      }
+    } catch (e) {
+      Scaffold(
+        backgroundColor: Colors.white,
+        body: Container(
+          child: Center(
+            child: SpinKitWave(
+              color: Color.fromARGB(255, 241, 106, 53),
+              size: 25,
+            ),
+          ),
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -112,236 +194,242 @@ class _HomePageState extends State<HomePage> {
                 "assets/icons/logo nama.png",
                 width: 100,
               ),
-              GestureDetector(
-                onTap: () {},
-                child: Container(
-                  padding: EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(13),
-                    color: Color(0xfff2f2f2),
-                  ),
-                  child: Icon(Icons.notifications, color: Colors.black),
-                ),
+              Image.asset(
+                "assets/icons/red flag.png",
+                width: 30,
               ),
             ],
           ),
         ),
         backgroundColor: Colors.white,
-        body: ListView(
-          children: [
-            Padding(
-              padding: EdgeInsets.only(top: 20, left: 20, bottom: 10),
-              child: Text(
-                "Live Match",
-                style: TextStyle(
-                  color: Colors.black45,
-                  fontWeight: FontWeight.w900,
-                  fontSize: 15,
+        body: isLoading
+            ? Center(
+                child: SpinKitWave(
+                  color: Color.fromARGB(255, 241, 106, 53),
+                  size: 25,
                 ),
-              ),
-            ),
-            SingleChildScrollView(
-              physics: BouncingScrollPhysics(),
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: leagues.map((league) {
-                  return Container(
-                    width: 230,
-                    height: MediaQuery.of(context).size.height * 0.2,
-                    margin: EdgeInsets.all(10),
-                    padding: EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      color: Color(league["color"]),
-                      borderRadius: BorderRadius.circular(15),
+              )
+            : ListView(
+                physics: BouncingScrollPhysics(),
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(top: 20, left: 20, bottom: 10),
+                    child: Text(
+                      "Live Match",
+                      style: TextStyle(
+                        color: Colors.black45,
+                        fontWeight: FontWeight.w900,
+                        fontSize: 15,
+                      ),
                     ),
-                    child: Stack(
+                  ),
+                  SingleChildScrollView(
+                    physics: BouncingScrollPhysics(),
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: liveMatchList.map((liveMatch) {
+                        return Container(
+                          width: 230,
+                          height: MediaQuery.of(context).size.height * 0.2,
+                          margin: EdgeInsets.all(10),
+                          padding: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            color: Colors.transparent,
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          child: Stack(
+                            fit: StackFit.expand,
+                            children: [
+                              Image.network(
+                                liveMatch.image,
+                                fit: BoxFit.fitWidth,
+                              ),
+                              Positioned(
+                                right: 50,
+                                left: 50,
+                                child: Column(
+                                  children: [
+                                    Text(
+                                      liveMatch.league,
+                                      style: TextStyle(color: Colors.white),
+                                    ),
+                                    SizedBox(height: 5),
+                                    Text(
+                                      liveMatch.week,
+                                      style: TextStyle(
+                                          color: Colors.white54, fontSize: 10),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Positioned(
+                                bottom: 5,
+                                left: 5,
+                                right: 5,
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Column(
+                                      children: [
+                                        Image.network(
+                                          liveMatch.image1,
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.1,
+                                        ),
+                                        SizedBox(
+                                          height: 8,
+                                        ),
+                                        Text(
+                                          liveMatch.team1,
+                                          style: TextStyle(color: Colors.white),
+                                        ),
+                                      ],
+                                    ),
+                                    Text(
+                                      liveMatch.score,
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.06,
+                                          fontWeight: FontWeight.w800),
+                                    ),
+                                    Column(
+                                      children: [
+                                        Image.network(
+                                          liveMatch.image2,
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.1,
+                                        ),
+                                        SizedBox(
+                                          height: 8,
+                                        ),
+                                        Text(
+                                          liveMatch.team2,
+                                          style: TextStyle(color: Colors.white),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        );
+                      }).toList(),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Positioned(
-                          right: -30,
-                          top: -20,
-                          bottom: -20,
-                          child: Image.asset(
-                            league["image"],
+                        Text(
+                          "Matchs",
+                          style: TextStyle(
+                            color: Colors.black45,
+                            fontWeight: FontWeight.w900,
+                            fontSize: 15,
                           ),
                         ),
-                        Positioned(
-                          right: 50,
-                          left: 50,
-                          child: Column(
-                            children: [
-                              Text(
-                                league["league"],
-                                style: TextStyle(color: Colors.white),
-                              ),
-                              SizedBox(height: 5),
-                              Text(
-                                league["week"],
-                                style: TextStyle(
-                                    color: Colors.white54, fontSize: 10),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Positioned(
-                          bottom: 5,
-                          left: 5,
-                          right: 5,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Column(
-                                children: [
-                                  Image.asset(
-                                    league["image1"],
-                                    width:
-                                        MediaQuery.of(context).size.width * 0.1,
-                                  ),
-                                  SizedBox(
-                                    height: 8,
-                                  ),
-                                  Text(
-                                    league["team1"],
-                                    style: TextStyle(color: Colors.white),
-                                  ),
-                                ],
-                              ),
-                              Text(
-                                league["score"],
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize:
-                                        MediaQuery.of(context).size.width *
-                                            0.06,
-                                    fontWeight: FontWeight.w800),
-                              ),
-                              Column(
-                                children: [
-                                  Image.asset(
-                                    league["image2"],
-                                    width:
-                                        MediaQuery.of(context).size.width * 0.1,
-                                  ),
-                                  SizedBox(
-                                    height: 8,
-                                  ),
-                                  Text(
-                                    league["team2"],
-                                    style: TextStyle(color: Colors.white),
-                                  ),
-                                ],
-                              ),
-                            ],
+                        Text(
+                          "...",
+                          style: TextStyle(
+                            color: Colors.deepOrange,
+                            fontWeight: FontWeight.w900,
+                            fontSize: 13,
                           ),
                         ),
                       ],
                     ),
-                  );
-                }).toList(),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Matchs",
-                    style: TextStyle(
-                      color: Colors.black45,
-                      fontWeight: FontWeight.w900,
-                      fontSize: 15,
-                    ),
                   ),
-                  Text(
-                    "see all",
-                    style: TextStyle(
-                      color: Colors.deepOrange,
-                      fontWeight: FontWeight.w900,
-                      fontSize: 13,
+                  SingleChildScrollView(
+                    physics: BouncingScrollPhysics(),
+                    scrollDirection: Axis.vertical,
+                    child: Column(
+                      children: matchsList.map((matchs) {
+                        return Container(
+                          width: MediaQuery.of(context).size.width * 0.9,
+                          height: 80,
+                          margin: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(15),
+                            boxShadow: [
+                              BoxShadow(
+                                offset: Offset(4.0, 4.0),
+                                blurRadius: 15.0,
+                                spreadRadius: 1.0,
+                                color: Colors.grey.shade500,
+                              ),
+                              BoxShadow(
+                                offset: Offset(-4.0, -4.0),
+                                blurRadius: 15.0,
+                                spreadRadius: 1.0,
+                                color: Colors.white,
+                              ),
+                            ],
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Row(
+                                children: [
+                                  Text(
+                                    matchs.team1,
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  Image.network(
+                                    matchs.image1,
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.1,
+                                  ),
+                                ],
+                              ),
+                              Column(
+                                children: [
+                                  Text(
+                                    matchs.time,
+                                  ),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  Text(
+                                    matchs.date,
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Image.network(
+                                    matchs.image2,
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.1,
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  Text(
+                                    matchs.team2,
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        );
+                      }).toList(),
                     ),
                   ),
                 ],
               ),
-            ),
-            SingleChildScrollView(
-              physics: BouncingScrollPhysics(),
-              scrollDirection: Axis.vertical,
-              child: Column(
-                children: matchs.map((match) {
-                  return Container(
-                    width: MediaQuery.of(context).size.width * 0.9,
-                    height: 80,
-                    margin: EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(15),
-                      boxShadow: [
-                        BoxShadow(
-                          offset: Offset(4.0, 4.0),
-                          blurRadius: 15.0,
-                          spreadRadius: 1.0,
-                          color: Colors.grey.shade500,
-                        ),
-                        BoxShadow(
-                          offset: Offset(-4.0, -4.0),
-                          blurRadius: 15.0,
-                          spreadRadius: 1.0,
-                          color: Colors.white,
-                        ),
-                      ],
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Row(
-                          children: [
-                            Text(
-                              match["name1"],
-                            ),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Image.asset(
-                              match['image1'],
-                              width: MediaQuery.of(context).size.width * 0.1,
-                            ),
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            Text(
-                              match["time"],
-                            ),
-                            SizedBox(
-                              height: 5,
-                            ),
-                            Text(
-                              match["date"],
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            Image.asset(
-                              match['image2'],
-                              width: MediaQuery.of(context).size.width * 0.1,
-                            ),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Text(
-                              match["name2"],
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  );
-                }).toList(),
-              ),
-            ),
-          ],
-        ),
       ),
     );
   }
