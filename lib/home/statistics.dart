@@ -12,24 +12,32 @@ class JsonData {
   final String team1;
   final String image2;
   final String team2;
-  // final String score1;
-  // final String score2;
-  // final String shoot1;
-  // final String shoot2;
-  // final String pass1;
-  // final String pass2;
+  final String score1;
+  final String score2;
+  final String shoot1;
+  final String shoot2;
+  final String pass1;
+  final String pass2;
+  final String accuracy1;
+  final String accuracy2;
+  final String possesion1;
+  final String possesion2;
 
   JsonData({
     required this.image1,
     required this.team1,
     required this.image2,
     required this.team2,
-    // required this.score1,
-    // required this.score2,
-    // required this.shoot1,
-    // required this.shoot2,
-    // required this.pass1,
-    // required this.pass2,
+    required this.score1,
+    required this.score2,
+    required this.shoot1,
+    required this.shoot2,
+    required this.pass1,
+    required this.pass2,
+    required this.accuracy1,
+    required this.accuracy2,
+    required this.possesion1,
+    required this.possesion2,
   });
 }
 
@@ -47,7 +55,7 @@ class _StatisticsPageState extends State<StatisticsPage> {
   bool isLoading = true;
 
   Future<void> statistic() async {
-    const jsonUrl = 'https://pastebin.com/raw/xaZxCKiG';
+    const jsonUrl = 'https://pastebin.com/raw/jCq72U7d';
 
     try {
       final response = await http.get(Uri.parse(jsonUrl));
@@ -59,12 +67,16 @@ class _StatisticsPageState extends State<StatisticsPage> {
             team1: data['team1'],
             image2: data['image2'],
             team2: data['team2'],
-            // score1: data['score1'],
-            // score2: data['score2'],
-            // shoot1: data['shoot1'],
-            // shoot2: data['shoot2'],
-            // pass1: data['pass1'],
-            // pass2: data['pass2'],
+            score1: data['score1'],
+            score2: data['score2'],
+            shoot1: data['shoot1'],
+            shoot2: data['shoot2'],
+            pass1: data['pass1'],
+            pass2: data['pass2'],
+            accuracy1: data['accuracy1'],
+            accuracy2: data['accuracy2'],
+            possesion1: data['possesion1'],
+            possesion2: data['possesion2'],
           );
         }).toList();
 
@@ -189,120 +201,118 @@ class _StatisticsPageState extends State<StatisticsPage> {
                           ),
                         ),
                       ),
-                      // if (isExpanded)
-                      //   Padding(
-                      //     padding: const EdgeInsets.symmetric(
-                      //         horizontal: 30, vertical: 20),
-                      //     child: Column(
-                      //       children: [
-                      //         Row(
-                      //           mainAxisAlignment:
-                      //               MainAxisAlignment.spaceBetween,
-                      //           children: [
-                      //             Text(
-                      //               jsonData.score1,
-                      //               textAlign: TextAlign.justify,
-                      //               style: const TextStyle(
-                      //                 color: Color(0xFF0d0d0d),
-                      //               ),
-                      //             ),
-                      //             Text("GOALS"),
-                      //             Text(
-                      //               jsonData.score2,
-                      //               textAlign: TextAlign.justify,
-                      //               style: const TextStyle(
-                      //                 color: Color(0xFF0d0d0d),
-                      //               ),
-                      //             ),
-                      //           ],
-                      //         ),
-                      //         Row(
-                      //           mainAxisAlignment:
-                      //               MainAxisAlignment.spaceBetween,
-                      //           children: [
-                      //             Text(
-                      //               jsonData.score1,
-                      //               textAlign: TextAlign.justify,
-                      //               style: const TextStyle(
-                      //                 color: Color(0xFF0d0d0d),
-                      //               ),
-                      //             ),
-                      //             Text("SHOOTS [ON TARGET]"),
-                      //             Text(
-                      //               jsonData.score2,
-                      //               textAlign: TextAlign.justify,
-                      //               style: const TextStyle(
-                      //                 color: Color(0xFF0d0d0d),
-                      //               ),
-                      //             ),
-                      //           ],
-                      //         ),
-                      //         Row(
-                      //           mainAxisAlignment:
-                      //               MainAxisAlignment.spaceBetween,
-                      //           children: [
-                      //             Text(
-                      //               jsonData.shoot1,
-                      //               textAlign: TextAlign.justify,
-                      //               style: const TextStyle(
-                      //                 color: Color(0xFF0d0d0d),
-                      //               ),
-                      //             ),
-                      //             Text("PASSES"),
-                      //             Text(
-                      //               jsonData.shoot2,
-                      //               textAlign: TextAlign.justify,
-                      //               style: const TextStyle(
-                      //                 color: Color(0xFF0d0d0d),
-                      //               ),
-                      //             ),
-                      //           ],
-                      //         ),
-                      // Row(
-                      //   mainAxisAlignment:
-                      //       MainAxisAlignment.spaceBetween,
-                      //   children: [
-                      //     Text(
-                      //       jsonData.accuracy1,
-                      //       textAlign: TextAlign.justify,
-                      //       style: const TextStyle(
-                      //         color: Color(0xFF0d0d0d),
-                      //       ),
-                      //     ),
-                      //     Text("PASS ACCURACY"),
-                      //     Text(
-                      //       jsonData.accuracy2,
-                      //       textAlign: TextAlign.justify,
-                      //       style: const TextStyle(
-                      //         color: Color(0xFF0d0d0d),
-                      //       ),
-                      //     ),
-                      //   ],
-                      // ),
-                      // Row(
-                      //   mainAxisAlignment:
-                      //       MainAxisAlignment.spaceBetween,
-                      //   children: [
-                      //     Text(
-                      //       jsonData.possesion1,
-                      //       textAlign: TextAlign.justify,
-                      //       style: const TextStyle(
-                      //         color: Color(0xFF0d0d0d),
-                      //       ),
-                      //     ),
-                      //     Text("BALL POSSESION"),
-                      //     Text(
-                      //       jsonData.possesion2,
-                      //       textAlign: TextAlign.justify,
-                      //       style: const TextStyle(
-                      //         color: Color(0xFF0d0d0d),
-                      //       ),
-                      //     ),
-                      //   ],
-                      // ),
-                      //     ],
-                      //   ),
-                      // ),
+                      if (isExpanded)
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 30, vertical: 20),
+                          child: Column(
+                            children: [
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    jsonData.shoot1,
+                                    style: const TextStyle(
+                                      color: Color(0xFF0d0d0d),
+                                    ),
+                                  ),
+                                  Text("GOALS"),
+                                  Text(
+                                    jsonData.shoot2,
+                                    style: const TextStyle(
+                                      color: Color(0xFF0d0d0d),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    jsonData.score1,
+                                    textAlign: TextAlign.justify,
+                                    style: const TextStyle(
+                                      color: Color(0xFF0d0d0d),
+                                    ),
+                                  ),
+                                  Text("SHOOTS [ON TARGET]"),
+                                  Text(
+                                    jsonData.score2,
+                                    textAlign: TextAlign.justify,
+                                    style: const TextStyle(
+                                      color: Color(0xFF0d0d0d),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    jsonData.shoot1,
+                                    textAlign: TextAlign.justify,
+                                    style: const TextStyle(
+                                      color: Color(0xFF0d0d0d),
+                                    ),
+                                  ),
+                                  Text("PASSES"),
+                                  Text(
+                                    jsonData.shoot2,
+                                    textAlign: TextAlign.justify,
+                                    style: const TextStyle(
+                                      color: Color(0xFF0d0d0d),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    jsonData.accuracy1,
+                                    textAlign: TextAlign.justify,
+                                    style: const TextStyle(
+                                      color: Color(0xFF0d0d0d),
+                                    ),
+                                  ),
+                                  Text("PASS ACCURACY"),
+                                  Text(
+                                    jsonData.accuracy2,
+                                    textAlign: TextAlign.justify,
+                                    style: const TextStyle(
+                                      color: Color(0xFF0d0d0d),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    jsonData.possesion1,
+                                    textAlign: TextAlign.justify,
+                                    style: const TextStyle(
+                                      color: Color(0xFF0d0d0d),
+                                    ),
+                                  ),
+                                  Text("BALL POSSESION"),
+                                  Text(
+                                    jsonData.possesion2,
+                                    textAlign: TextAlign.justify,
+                                    style: const TextStyle(
+                                      color: Color(0xFF0d0d0d),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
                     ],
                   );
                 }).toList(),
