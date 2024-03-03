@@ -39,6 +39,7 @@ dependencies:
   http: ^1.1.2
   flutter_spinkit: ^5.2.0
   google_fonts: ^6.1.0
+  blurrycontainer: ^1.0.2
 
 dev_dependencies:
   flutter_test:

@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_element, unused_field
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_element, unused_field, avoid_unnecessary_containers
 
 import 'dart:convert';
 
@@ -60,6 +60,108 @@ class _HomePageState extends State<HomePage> {
   List<LiveMatch> liveMatchList = [];
   List<Matchs> matchsList = [];
   bool isLoading = true;
+
+  void _openDrawer() {
+    _scaffoldKey.currentState!.openDrawer();
+  }
+
+  Drawer buildDrawer(BuildContext context) {
+    return Drawer(
+      width: MediaQuery.of(context).size.width * 0.7,
+      child: ListView(
+        padding: EdgeInsets.zero,
+        children: [
+          DrawerHeader(
+            decoration: BoxDecoration(
+              color: Color.fromARGB(255, 255, 13, 0),
+            ),
+            child: Text(
+              'Menu',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 24,
+              ),
+            ),
+          ),
+          ListTile(
+            title: Row(
+              children: [
+                Image.asset(
+                  "assets/images/laliga.png",
+                  width: 30,
+                ),
+                SizedBox(width: 10),
+                Text('La Liga'),
+              ],
+            ),
+            onTap: () {
+              // Action when Menu 1 is tapped
+            },
+          ),
+          ListTile(
+            title: Row(
+              children: [
+                Image.asset(
+                  "assets/images/images-removebg-preview (1).png",
+                  width: 30,
+                ),
+                SizedBox(width: 10),
+                Text('Premier League'),
+              ],
+            ),
+            onTap: () {
+              // Action when Menu 1 is tapped
+            },
+          ),
+          ListTile(
+            title: Row(
+              children: [
+                Image.asset(
+                  "assets/images/bundesliga.png",
+                  width: 30,
+                ),
+                SizedBox(width: 10),
+                Text('Bundesliga'),
+              ],
+            ),
+            onTap: () {
+              // Action when Menu 1 is tapped
+            },
+          ),
+          ListTile(
+            title: Row(
+              children: [
+                Image.asset(
+                  "assets/images/asl.png",
+                  width: 30,
+                ),
+                SizedBox(width: 10),
+                Text('UCL'),
+              ],
+            ),
+            onTap: () {
+              // Action when Menu 1 is tapped
+            },
+          ),
+          ListTile(
+            title: Row(
+              children: [
+                Image.asset(
+                  "assets/images/asl.png",
+                  width: 30,
+                ),
+                SizedBox(width: 10),
+                Text('Arab Saudi League'),
+              ],
+            ),
+            onTap: () {
+              // Action when Menu 1 is tapped
+            },
+          ),
+        ],
+      ),
+    );
+  }
 
   @override
   void initState() {
@@ -160,15 +262,12 @@ class _HomePageState extends State<HomePage> {
       title: "Soccer Point",
       home: Scaffold(
         appBar: AppBar(
+          key: _scaffoldKey,
           elevation: 0,
           backgroundColor: Colors.white,
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Image.asset(
-                "assets/icons/red flag.png",
-                width: 30,
-              ),
               Image.asset(
                 "assets/icons/logo nama.png",
                 width: 100,
@@ -180,6 +279,7 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
         ),
+        drawer: buildDrawer(context),
         backgroundColor: Colors.white,
         body: isLoading
             ? Center(
@@ -211,7 +311,6 @@ class _HomePageState extends State<HomePage> {
                           width: MediaQuery.of(context).size.width * 0.8,
                           height: 170,
                           margin: EdgeInsets.all(10),
-                          padding: EdgeInsets.all(10),
                           decoration: BoxDecoration(
                             color: Colors.grey,
                             borderRadius: BorderRadius.circular(15),
@@ -226,73 +325,82 @@ class _HomePageState extends State<HomePage> {
                               Positioned(
                                 right: 50,
                                 left: 50,
-                                child: Column(
-                                  children: [
-                                    Text(
-                                      liveMatch.league,
-                                      style: TextStyle(color: Colors.white),
-                                    ),
-                                    SizedBox(height: 5),
-                                    Text(
-                                      liveMatch.week,
-                                      style: TextStyle(
-                                          color: Colors.white54, fontSize: 10),
-                                    ),
-                                  ],
+                                child: Padding(
+                                  padding: EdgeInsets.all(10),
+                                  child: Column(
+                                    children: [
+                                      Text(
+                                        liveMatch.league,
+                                        style: TextStyle(color: Colors.white),
+                                      ),
+                                      SizedBox(height: 5),
+                                      Text(
+                                        liveMatch.week,
+                                        style: TextStyle(
+                                            color: Colors.white54,
+                                            fontSize: 10),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                               Positioned(
                                 bottom: 5,
                                 left: 5,
                                 right: 5,
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Column(
-                                      children: [
-                                        Image.network(
-                                          liveMatch.image1,
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.1,
-                                        ),
-                                        SizedBox(
-                                          height: 8,
-                                        ),
-                                        Text(
-                                          liveMatch.team1,
-                                          style: TextStyle(color: Colors.white),
-                                        ),
-                                      ],
-                                    ),
-                                    Text(
-                                      liveMatch.score,
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.w800),
-                                    ),
-                                    Column(
-                                      children: [
-                                        Image.network(
-                                          liveMatch.image2,
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.1,
-                                        ),
-                                        SizedBox(
-                                          height: 8,
-                                        ),
-                                        Text(
-                                          liveMatch.team2,
-                                          style: TextStyle(color: Colors.white),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
+                                child: Padding(
+                                  padding: EdgeInsets.all(10),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Column(
+                                        children: [
+                                          Image.network(
+                                            liveMatch.image1,
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.1,
+                                          ),
+                                          SizedBox(
+                                            height: 8,
+                                          ),
+                                          Text(
+                                            liveMatch.team1,
+                                            style:
+                                                TextStyle(color: Colors.white),
+                                          ),
+                                        ],
+                                      ),
+                                      Text(
+                                        liveMatch.score,
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.w800),
+                                      ),
+                                      Column(
+                                        children: [
+                                          Image.network(
+                                            liveMatch.image2,
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.1,
+                                          ),
+                                          SizedBox(
+                                            height: 8,
+                                          ),
+                                          Text(
+                                            liveMatch.team2,
+                                            style:
+                                                TextStyle(color: Colors.white),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ],

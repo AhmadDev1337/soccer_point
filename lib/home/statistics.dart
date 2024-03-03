@@ -110,11 +110,11 @@ class _StatisticsPageState extends State<StatisticsPage> {
       home: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.white,
-          title: Text("Statistics"),
+          title: const Text("Statistics"),
         ),
         backgroundColor: Colors.white,
         body: isLoading
-            ? Center(
+            ? const Center(
                 child: SpinKitWave(
                   color: Color.fromARGB(255, 255, 13, 0),
                   size: 25,
@@ -131,10 +131,10 @@ class _StatisticsPageState extends State<StatisticsPage> {
                           });
                         },
                         child: Container(
-                          padding: EdgeInsets.all(10),
+                          padding: const EdgeInsets.all(10),
                           decoration: BoxDecoration(
                             gradient: isExpanded
-                                ? LinearGradient(
+                                ? const LinearGradient(
                                     begin: Alignment.centerLeft,
                                     end: Alignment.centerRight,
                                     colors: [
@@ -155,7 +155,7 @@ class _StatisticsPageState extends State<StatisticsPage> {
                                     width:
                                         MediaQuery.of(context).size.width * 0.1,
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 8,
                                   ),
                                   Text(
@@ -185,7 +185,7 @@ class _StatisticsPageState extends State<StatisticsPage> {
                                     width:
                                         MediaQuery.of(context).size.width * 0.1,
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 8,
                                   ),
                                   Text(
@@ -217,7 +217,7 @@ class _StatisticsPageState extends State<StatisticsPage> {
                                       color: Color(0xFF0d0d0d),
                                     ),
                                   ),
-                                  Text("GOALS"),
+                                  const Text("GOALS"),
                                   Text(
                                     jsonData.shoot2,
                                     style: const TextStyle(
@@ -237,7 +237,7 @@ class _StatisticsPageState extends State<StatisticsPage> {
                                       color: Color(0xFF0d0d0d),
                                     ),
                                   ),
-                                  Text("SHOOTS [ON TARGET]"),
+                                  const Text("SHOOTS [ON TARGET]"),
                                   Text(
                                     jsonData.score2,
                                     textAlign: TextAlign.justify,
@@ -258,7 +258,7 @@ class _StatisticsPageState extends State<StatisticsPage> {
                                       color: Color(0xFF0d0d0d),
                                     ),
                                   ),
-                                  Text("PASSES"),
+                                  const Text("PASSES"),
                                   Text(
                                     jsonData.shoot2,
                                     textAlign: TextAlign.justify,
@@ -279,7 +279,7 @@ class _StatisticsPageState extends State<StatisticsPage> {
                                       color: Color(0xFF0d0d0d),
                                     ),
                                   ),
-                                  Text("PASS ACCURACY"),
+                                  const Text("PASS ACCURACY"),
                                   Text(
                                     jsonData.accuracy2,
                                     textAlign: TextAlign.justify,
@@ -300,7 +300,7 @@ class _StatisticsPageState extends State<StatisticsPage> {
                                       color: Color(0xFF0d0d0d),
                                     ),
                                   ),
-                                  Text("BALL POSSESION"),
+                                  const Text("BALL POSSESION"),
                                   Text(
                                     jsonData.possesion2,
                                     textAlign: TextAlign.justify,

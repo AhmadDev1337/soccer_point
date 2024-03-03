@@ -1,9 +1,8 @@
-// ignore_for_file: unused_field, prefer_final_fields, prefer_const_literals_to_create_immutables, prefer_const_constructors
+// ignore_for_file: unused_field, prefer_final_fields, prefer_const_literals_to_create_immutables, prefer_const_constructors, deprecated_member_use
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import 'account.dart';
 import 'home_page.dart';
 import 'statistics.dart';
 
@@ -41,15 +40,14 @@ class _BarControllerState extends State<BarController> {
             children: [
               HomePage(),
               StatisticsPage(),
-              AccountPage(),
             ],
           ),
           Positioned(
             bottom: 0,
-            left: 0,
-            right: 0,
+            left: 50,
+            right: 50,
             child: Container(
-              color: Colors.white,
+              color: Colors.transparent,
               padding: EdgeInsets.symmetric(vertical: 5, horizontal: 40),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -83,7 +81,7 @@ class _BarControllerState extends State<BarController> {
                             decoration: BoxDecoration(
                               color: _currentPageIndex == 0
                                   ? Color.fromARGB(255, 40, 40, 41)
-                                  : Colors.white,
+                                  : Colors.transparent,
                               shape: BoxShape.circle,
                             ),
                           ),
@@ -120,44 +118,7 @@ class _BarControllerState extends State<BarController> {
                             decoration: BoxDecoration(
                               color: _currentPageIndex == 1
                                   ? Color.fromARGB(255, 40, 40, 41)
-                                  : Colors.white,
-                              shape: BoxShape.circle,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      _pageController.animateToPage(
-                        2,
-                        duration: Duration(milliseconds: 500),
-                        curve: Curves.easeInOut,
-                      );
-                    },
-                    child: Container(
-                      padding: EdgeInsets.all(8),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(25),
-                      ),
-                      child: Column(
-                        children: [
-                          SvgPicture.asset(
-                            "assets/icons/user-svgrepo-com.svg",
-                            width: 20,
-                            color: _currentPageIndex == 2
-                                ? Color.fromARGB(255, 40, 40, 41)
-                                : Colors.grey,
-                          ),
-                          SizedBox(height: 8),
-                          Container(
-                            width: 5,
-                            height: 5,
-                            decoration: BoxDecoration(
-                              color: _currentPageIndex == 2
-                                  ? Color.fromARGB(255, 40, 40, 41)
-                                  : Colors.white,
+                                  : Colors.transparent,
                               shape: BoxShape.circle,
                             ),
                           ),
