@@ -1,10 +1,14 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_element, unused_field, avoid_unnecessary_containers
 
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:http/http.dart' as http;
+
+import 'drawer/premier_league.dart';
 
 class LiveMatch {
   final String image;
@@ -60,6 +64,24 @@ class _HomePageState extends State<HomePage> {
   List<LiveMatch> liveMatchList = [];
   List<Matchs> matchsList = [];
   bool isLoading = true;
+  InterstitialAd? _interstitialAd;
+
+  void _loadInterstitialAd() {
+    InterstitialAd.load(
+      adUnitId: 'ca-app-pub-8363980854824352/2854697735',
+      request: AdRequest(),
+      adLoadCallback: InterstitialAdLoadCallback(
+        onAdLoaded: (InterstitialAd ad) {
+          _interstitialAd = ad;
+          _interstitialAd!.show();
+          log('Ad onAdLoaded');
+        },
+        onAdFailedToLoad: (LoadAdError error) {
+          log('Interstitial ad failed to load: $error');
+        },
+      ),
+    );
+  }
 
   void _openDrawer() {
     _scaffoldKey.currentState!.openDrawer();
@@ -67,13 +89,14 @@ class _HomePageState extends State<HomePage> {
 
   Drawer buildDrawer(BuildContext context) {
     return Drawer(
+      shadowColor: Colors.grey,
       width: MediaQuery.of(context).size.width * 0.7,
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
           DrawerHeader(
             decoration: BoxDecoration(
-              color: Color.fromARGB(255, 255, 13, 0),
+              color: Color.fromARGB(255, 1, 6, 34),
             ),
             child: Text(
               'Menu',
@@ -110,7 +133,9 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
             onTap: () {
-              // Action when Menu 1 is tapped
+              _loadInterstitialAd();
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => PremierLeaguePage()));
             },
           ),
           ListTile(
@@ -168,6 +193,7 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     liveMatch();
     match();
+    _loadInterstitialAd();
   }
 
   Future<void> liveMatch() async {
@@ -204,7 +230,7 @@ class _HomePageState extends State<HomePage> {
         body: Container(
           child: Center(
             child: SpinKitWave(
-              color: Color.fromARGB(255, 255, 13, 0),
+              color: Color(0xff1e90ff),
               size: 25,
             ),
           ),
@@ -246,7 +272,7 @@ class _HomePageState extends State<HomePage> {
         body: Container(
           child: Center(
             child: SpinKitWave(
-              color: Color.fromARGB(255, 255, 13, 0),
+              color: Color(0xff1e90ff),
               size: 25,
             ),
           ),
@@ -264,13 +290,14 @@ class _HomePageState extends State<HomePage> {
         appBar: AppBar(
           key: _scaffoldKey,
           elevation: 0,
-          backgroundColor: Colors.white,
+          backgroundColor: Color.fromARGB(255, 1, 6, 34),
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Image.asset(
                 "assets/icons/logo nama.png",
                 width: 100,
+                color: Colors.grey,
               ),
               Image.asset(
                 "assets/icons/red flag.png",
@@ -280,11 +307,11 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         drawer: buildDrawer(context),
-        backgroundColor: Colors.white,
+        backgroundColor: Color.fromARGB(255, 1, 6, 34),
         body: isLoading
             ? Center(
                 child: SpinKitWave(
-                  color: Color.fromARGB(255, 255, 13, 0),
+                  color: Color(0xff1e90ff),
                   size: 25,
                 ),
               )
@@ -296,7 +323,7 @@ class _HomePageState extends State<HomePage> {
                     child: Text(
                       "Live Match",
                       style: TextStyle(
-                        color: Colors.black45,
+                        color: Colors.grey,
                         fontWeight: FontWeight.w900,
                         fontSize: 15,
                       ),
@@ -313,14 +340,17 @@ class _HomePageState extends State<HomePage> {
                           margin: EdgeInsets.all(10),
                           decoration: BoxDecoration(
                             color: Colors.grey,
-                            borderRadius: BorderRadius.circular(15),
+                            borderRadius: BorderRadius.circular(20),
                           ),
                           child: Stack(
                             fit: StackFit.expand,
                             children: [
-                              Image.network(
-                                liveMatch.image,
-                                fit: BoxFit.fitWidth,
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(20),
+                                child: Image.network(
+                                  liveMatch.image,
+                                  fit: BoxFit.fitWidth,
+                                ),
                               ),
                               Positioned(
                                 right: 50,
@@ -417,7 +447,7 @@ class _HomePageState extends State<HomePage> {
                         Text(
                           "Matchs",
                           style: TextStyle(
-                            color: Colors.black45,
+                            color: Colors.grey,
                             fontWeight: FontWeight.w900,
                             fontSize: 15,
                           ),
@@ -425,7 +455,7 @@ class _HomePageState extends State<HomePage> {
                         Text(
                           "...",
                           style: TextStyle(
-                            color: Color.fromARGB(255, 255, 13, 0),
+                            color: Color(0xff1e90ff),
                             fontWeight: FontWeight.w900,
                             fontSize: 13,
                           ),
@@ -443,20 +473,20 @@ class _HomePageState extends State<HomePage> {
                           height: 80,
                           margin: EdgeInsets.all(10),
                           decoration: BoxDecoration(
-                            color: Colors.white,
+                            color: Color.fromARGB(255, 1, 6, 34),
                             borderRadius: BorderRadius.circular(15),
                             boxShadow: [
                               BoxShadow(
                                 offset: Offset(4.0, 4.0),
                                 blurRadius: 15.0,
                                 spreadRadius: 1.0,
-                                color: Colors.grey.shade500,
+                                color: Colors.grey.shade800,
                               ),
                               BoxShadow(
                                 offset: Offset(-4.0, -4.0),
                                 blurRadius: 15.0,
                                 spreadRadius: 1.0,
-                                color: Colors.white,
+                                color: Color.fromARGB(255, 1, 6, 34),
                               ),
                             ],
                           ),
@@ -467,6 +497,9 @@ class _HomePageState extends State<HomePage> {
                                 children: [
                                   Text(
                                     matchs.team1,
+                                    style: const TextStyle(
+                                      color: Colors.grey,
+                                    ),
                                   ),
                                   SizedBox(
                                     width: 10,
@@ -482,12 +515,18 @@ class _HomePageState extends State<HomePage> {
                                 children: [
                                   Text(
                                     matchs.time,
+                                    style: const TextStyle(
+                                      color: Colors.grey,
+                                    ),
                                   ),
                                   SizedBox(
                                     height: 5,
                                   ),
                                   Text(
                                     matchs.date,
+                                    style: const TextStyle(
+                                      color: Colors.grey,
+                                    ),
                                   ),
                                 ],
                               ),
@@ -503,6 +542,9 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                   Text(
                                     matchs.team2,
+                                    style: const TextStyle(
+                                      color: Colors.grey,
+                                    ),
                                   ),
                                 ],
                               ),

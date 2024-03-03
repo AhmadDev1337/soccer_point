@@ -71,7 +71,7 @@ class _BarControllerState extends State<BarController> {
                             "assets/icons/home-1-svgrepo-com.svg",
                             width: 20,
                             color: _currentPageIndex == 0
-                                ? Color.fromARGB(255, 40, 40, 41)
+                                ? Color(0xff1e90ff)
                                 : Colors.grey,
                           ),
                           SizedBox(height: 8),
@@ -80,7 +80,7 @@ class _BarControllerState extends State<BarController> {
                             height: 5,
                             decoration: BoxDecoration(
                               color: _currentPageIndex == 0
-                                  ? Color.fromARGB(255, 40, 40, 41)
+                                  ? Color(0xff1e90ff)
                                   : Colors.transparent,
                               shape: BoxShape.circle,
                             ),
@@ -108,7 +108,7 @@ class _BarControllerState extends State<BarController> {
                             "assets/icons/candle.png",
                             width: 20,
                             color: _currentPageIndex == 1
-                                ? Color.fromARGB(255, 40, 40, 41)
+                                ? Color(0xff1e90ff)
                                 : Colors.grey,
                           ),
                           SizedBox(height: 8),
@@ -117,7 +117,7 @@ class _BarControllerState extends State<BarController> {
                             height: 5,
                             decoration: BoxDecoration(
                               color: _currentPageIndex == 1
-                                  ? Color.fromARGB(255, 40, 40, 41)
+                                  ? Color(0xff1e90ff)
                                   : Colors.transparent,
                               shape: BoxShape.circle,
                             ),
