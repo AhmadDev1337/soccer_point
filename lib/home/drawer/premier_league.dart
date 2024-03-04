@@ -1,30 +1,10 @@
 // ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, prefer_const_literals_to_create_immutables
 
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:http/http.dart' as http;
 
-class Matchs {
-  final String week;
-  final String image1;
-  final String team1;
-  final String image2;
-  final String team2;
-  final String date;
-  final String time;
-
-  Matchs({
-    required this.week,
-    required this.image1,
-    required this.team1,
-    required this.image2,
-    required this.team2,
-    required this.date,
-    required this.time,
-  });
-}
+import 'items/classement.dart';
+import 'items/statistic.dart';
+import 'items/top_score.dart';
 
 class PremierLeaguePage extends StatefulWidget {
   const PremierLeaguePage({super.key});
@@ -34,55 +14,13 @@ class PremierLeaguePage extends StatefulWidget {
 }
 
 class _PremierLeaguePageState extends State<PremierLeaguePage> {
-  List<Matchs> matchsList = [];
-  bool isLoading = true;
+  int currentPageIndex = 0;
 
-  Future<void> match() async {
-    const singleJsonUrl = "https://pastebin.com/raw/xaZxCKiG";
-
-    try {
-      final response = await http.get(Uri.parse(singleJsonUrl));
-      if (response.statusCode == 200) {
-        final matchs = json.decode(response.body);
-        matchsList = matchs.map<Matchs>((data) {
-          return Matchs(
-              week: data["week"],
-              image1: data["image1"],
-              team1: data['team1'],
-              image2: data['image2'],
-              team2: data['team2'],
-              date: data['date'],
-              time: data['time']);
-        }).toList();
-
-        setState(() {
-          isLoading = false;
-        });
-      } else {
-        setState(() {
-          isLoading = false;
-        });
-      }
-    } catch (e) {
-      Scaffold(
-        backgroundColor: Colors.white,
-        body: Container(
-          child: Center(
-            child: SpinKitWave(
-              color: Color(0xff1e90ff),
-              size: 25,
-            ),
-          ),
-        ),
-      );
-    }
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    match();
-  }
+  final List<String> items = [
+    "Timetable",
+    "Classement",
+    "Top Score",
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -125,7 +63,7 @@ class _PremierLeaguePageState extends State<PremierLeaguePage> {
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Text(
-                  "2024",
+                  "2023 - 24",
                   style: TextStyle(color: Colors.white, fontSize: 10),
                 ),
               ),
@@ -180,127 +118,89 @@ class _PremierLeaguePageState extends State<PremierLeaguePage> {
                 ],
               ),
             ),
-            isLoading
-                ? Center(
-                    child: SpinKitWave(
-                      color: Color(0xff1e90ff),
-                      size: 25,
-                    ),
-                  )
-                : Container(
-                    padding: EdgeInsets.symmetric(
-                      vertical: 20,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Container(
+            Container(
+              height: MediaQuery.of(context).size.height * 0.9,
+              decoration: BoxDecoration(
+                color: Color.fromARGB(255, 1, 6, 34),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(height: 15),
+                  SizedBox(
+                    height: 30,
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      physics: BouncingScrollPhysics(),
+                      itemCount: items.length,
+                      itemBuilder: (context, index) {
+                        return Container(
+                          margin: EdgeInsets.symmetric(horizontal: 10),
                           padding:
                               EdgeInsets.symmetric(horizontal: 15, vertical: 5),
                           decoration: BoxDecoration(
-                            border: Border.all(color: Colors.grey),
-                            borderRadius: BorderRadius.circular(13),
+                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(
+                              color: currentPageIndex == index
+                                  ? Colors.white
+                                  : Colors.grey,
+                            ),
                           ),
-                          child: Text(
-                            "Statistic",
-                            style: TextStyle(color: Colors.grey, fontSize: 13),
+                          child: Center(
+                            child: Text(
+                              items[index],
+                              style: TextStyle(
+                                  color: currentPageIndex == index
+                                      ? Colors.white
+                                      : Colors.grey,
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.bold),
+                            ),
                           ),
-                        ),
-                        Container(
-                          padding:
-                              EdgeInsets.symmetric(horizontal: 15, vertical: 5),
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Colors.grey),
-                            borderRadius: BorderRadius.circular(13),
-                          ),
-                          child: Text(
-                            "Classement",
-                            style: TextStyle(color: Colors.grey, fontSize: 13),
-                          ),
-                        ),
-                        Container(
-                          padding:
-                              EdgeInsets.symmetric(horizontal: 15, vertical: 5),
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Colors.grey),
-                            borderRadius: BorderRadius.circular(13),
-                          ),
-                          child: Text(
-                            "Top Score",
-                            style: TextStyle(color: Colors.grey, fontSize: 13),
-                          ),
-                        ),
-                      ],
+                        );
+                      },
                     ),
                   ),
-            SingleChildScrollView(
-              physics: BouncingScrollPhysics(),
-              scrollDirection: Axis.vertical,
-              child: Column(
-                children: matchsList.map((matchs) {
-                  return ListTile(
-                    onTap: () {},
-                    title: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            Text(
-                              matchs.team1,
-                              style:
-                                  TextStyle(color: Colors.grey, fontSize: 13),
-                            ),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Image.network(
-                              matchs.image1,
-                              width: 25,
-                            ),
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            Text(
-                              matchs.time,
-                              style:
-                                  TextStyle(color: Colors.grey, fontSize: 13),
-                            ),
-                            SizedBox(
-                              height: 5,
-                            ),
-                            Text(
-                              matchs.date,
-                              style:
-                                  TextStyle(color: Colors.grey, fontSize: 13),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            Image.network(
-                              matchs.image2,
-                              width: 25,
-                            ),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Text(
-                              matchs.team2,
-                              style:
-                                  TextStyle(color: Colors.grey, fontSize: 13),
-                            ),
-                          ],
-                        ),
-                      ],
+                  SizedBox(height: 15),
+                  Expanded(
+                    child: PageView.builder(
+                      physics: BouncingScrollPhysics(),
+                      itemCount: items.length,
+                      onPageChanged: (index) {
+                        setState(() {
+                          currentPageIndex = index;
+                        });
+                      },
+                      itemBuilder: (context, index) {
+                        return buildItemPage(items[index]);
+                      },
                     ),
-                  );
-                }).toList(),
+                  ),
+                ],
               ),
             ),
           ],
         ),
       ),
+    );
+  }
+
+  Widget buildItemPage(String item) {
+    Widget content;
+    if (item == "Timetable") {
+      content = StatisticPage();
+    } else if (item == "Classement") {
+      content = ClassementPage();
+    } else {
+      content = TopScorePage();
+    }
+
+    return ListView(
+      scrollDirection: Axis.vertical,
+      physics: BouncingScrollPhysics(),
+      children: [
+        content,
+      ],
     );
   }
 }

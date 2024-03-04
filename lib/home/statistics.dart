@@ -109,15 +109,15 @@ class _StatisticsPageState extends State<StatisticsPage> {
       title: "Soccer Point",
       home: Scaffold(
         appBar: AppBar(
-          backgroundColor: Color.fromARGB(255, 1, 6, 34),
+          backgroundColor: const Color.fromARGB(255, 1, 6, 34),
           title: const Text(
             "Statistics",
-            style: const TextStyle(
+            style: TextStyle(
               color: Colors.grey,
             ),
           ),
         ),
-        backgroundColor: Color.fromARGB(255, 1, 6, 34),
+        backgroundColor: const Color.fromARGB(255, 1, 6, 34),
         body: isLoading
             ? const Center(
                 child: SpinKitWave(
@@ -149,7 +149,7 @@ class _StatisticsPageState extends State<StatisticsPage> {
                                   )
                                 : null,
                             color: !isExpanded
-                                ? Color.fromARGB(255, 1, 6, 34)
+                                ? const Color.fromARGB(255, 1, 6, 34)
                                 : null,
                           ),
                           child: Row(
@@ -225,7 +225,7 @@ class _StatisticsPageState extends State<StatisticsPage> {
                                   ),
                                   const Text(
                                     "GOALS",
-                                    style: const TextStyle(
+                                    style: TextStyle(
                                       color: Colors.grey,
                                     ),
                                   ),
@@ -250,7 +250,7 @@ class _StatisticsPageState extends State<StatisticsPage> {
                                   ),
                                   const Text(
                                     "SHOOTS [ON TARGET]",
-                                    style: const TextStyle(
+                                    style: TextStyle(
                                       color: Colors.grey,
                                     ),
                                   ),
@@ -276,7 +276,7 @@ class _StatisticsPageState extends State<StatisticsPage> {
                                   ),
                                   const Text(
                                     "PASSES",
-                                    style: const TextStyle(
+                                    style: TextStyle(
                                       color: Colors.grey,
                                     ),
                                   ),
@@ -302,7 +302,7 @@ class _StatisticsPageState extends State<StatisticsPage> {
                                   ),
                                   const Text(
                                     "PASS ACCURACY",
-                                    style: const TextStyle(
+                                    style: TextStyle(
                                       color: Colors.grey,
                                     ),
                                   ),
@@ -328,7 +328,7 @@ class _StatisticsPageState extends State<StatisticsPage> {
                                   ),
                                   const Text(
                                     "BALL POSSESION",
-                                    style: const TextStyle(
+                                    style: TextStyle(
                                       color: Colors.grey,
                                     ),
                                   ),
