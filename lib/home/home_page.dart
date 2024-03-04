@@ -99,7 +99,7 @@ class _HomePageState extends State<HomePage> {
               color: Color.fromARGB(255, 1, 6, 34),
             ),
             child: Text(
-              'Menu',
+              'Soccer Point',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 24,
