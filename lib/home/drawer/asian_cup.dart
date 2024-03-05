@@ -2,18 +2,18 @@
 
 import 'package:flutter/material.dart';
 
-import 'items premier league/classement.dart';
-import 'items premier league/timetable.dart';
-import 'items premier league/top_score.dart';
+import 'items asian cup/classement.dart';
+import 'items asian cup/timetable.dart';
+import 'items asian cup/top_score.dart';
 
-class PremierLeaguePage extends StatefulWidget {
-  const PremierLeaguePage({super.key});
+class AsianCupPage extends StatefulWidget {
+  const AsianCupPage({super.key});
 
   @override
-  State<PremierLeaguePage> createState() => _PremierLeaguePageState();
+  State<AsianCupPage> createState() => _AsianCupPageState();
 }
 
-class _PremierLeaguePageState extends State<PremierLeaguePage> {
+class _AsianCupPageState extends State<AsianCupPage> {
   int currentPageIndex = 0;
 
   final List<String> items = [

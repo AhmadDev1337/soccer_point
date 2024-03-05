@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import 'home_page.dart';
-import 'statistics.dart';
+import 'match_stats.dart';
 
 class BarController extends StatefulWidget {
   const BarController({super.key});

@@ -2,18 +2,18 @@
 
 import 'package:flutter/material.dart';
 
-import 'items premier league/classement.dart';
-import 'items premier league/timetable.dart';
-import 'items premier league/top_score.dart';
+import 'items bundesliga/classement.dart';
+import 'items bundesliga/timetable.dart';
+import 'items bundesliga/top_score.dart';
 
-class PremierLeaguePage extends StatefulWidget {
-  const PremierLeaguePage({super.key});
+class BundesligaPage extends StatefulWidget {
+  const BundesligaPage({super.key});
 
   @override
-  State<PremierLeaguePage> createState() => _PremierLeaguePageState();
+  State<BundesligaPage> createState() => _BundesligaPageState();
 }
 
-class _PremierLeaguePageState extends State<PremierLeaguePage> {
+class _BundesligaPageState extends State<BundesligaPage> {
   int currentPageIndex = 0;
 
   final List<String> items = [
@@ -82,7 +82,7 @@ class _PremierLeaguePageState extends State<PremierLeaguePage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Image.asset(
-                    "assets/images/images-removebg-preview (1).png",
+                    "assets/images/bundesliga.png",
                     width: 70,
                     color: Colors.white,
                   ),
@@ -91,7 +91,7 @@ class _PremierLeaguePageState extends State<PremierLeaguePage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "English Premier League",
+                        "Bundesliga",
                         style: TextStyle(
                             fontWeight: FontWeight.w700,
                             fontSize: 15,
@@ -108,7 +108,7 @@ class _PremierLeaguePageState extends State<PremierLeaguePage> {
                           ),
                           SizedBox(width: 8),
                           Text(
-                            "England",
+                            "German",
                             style: TextStyle(color: Colors.white),
                           ),
                         ],

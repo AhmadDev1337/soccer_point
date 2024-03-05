@@ -2,18 +2,18 @@
 
 import 'package:flutter/material.dart';
 
-import 'items premier league/classement.dart';
-import 'items premier league/timetable.dart';
-import 'items premier league/top_score.dart';
+import 'items laliga/classement.dart';
+import 'items laliga/timetable.dart';
+import 'items laliga/top_score.dart';
 
-class PremierLeaguePage extends StatefulWidget {
-  const PremierLeaguePage({super.key});
+class LaligaPage extends StatefulWidget {
+  const LaligaPage({super.key});
 
   @override
-  State<PremierLeaguePage> createState() => _PremierLeaguePageState();
+  State<LaligaPage> createState() => _LaligaPageState();
 }
 
-class _PremierLeaguePageState extends State<PremierLeaguePage> {
+class _LaligaPageState extends State<LaligaPage> {
   int currentPageIndex = 0;
 
   final List<String> items = [
@@ -82,7 +82,7 @@ class _PremierLeaguePageState extends State<PremierLeaguePage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Image.asset(
-                    "assets/images/images-removebg-preview (1).png",
+                    "assets/images/laliga.png",
                     width: 70,
                     color: Colors.white,
                   ),
@@ -91,7 +91,7 @@ class _PremierLeaguePageState extends State<PremierLeaguePage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "English Premier League",
+                        "Laliga",
                         style: TextStyle(
                             fontWeight: FontWeight.w700,
                             fontSize: 15,
@@ -108,7 +108,7 @@ class _PremierLeaguePageState extends State<PremierLeaguePage> {
                           ),
                           SizedBox(width: 8),
                           Text(
-                            "England",
+                            "Spanyol",
                             style: TextStyle(color: Colors.white),
                           ),
                         ],

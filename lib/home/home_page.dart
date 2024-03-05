@@ -8,7 +8,11 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:http/http.dart' as http;
 
+import 'drawer/bundesliga.dart';
+import 'drawer/laliga.dart';
 import 'drawer/premier_league.dart';
+import 'drawer/saudi_pro_league.dart';
+import 'drawer/ucl.dart';
 
 class LiveMatch {
   final String image;
@@ -118,7 +122,13 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
             onTap: () {
-              // Action when Menu 1 is tapped
+              _loadInterstitialAd();
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => LaligaPage(),
+                ),
+              );
             },
           ),
           ListTile(
@@ -134,8 +144,12 @@ class _HomePageState extends State<HomePage> {
             ),
             onTap: () {
               _loadInterstitialAd();
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => PremierLeaguePage()));
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => PremierLeaguePage(),
+                ),
+              );
             },
           ),
           ListTile(
@@ -150,7 +164,13 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
             onTap: () {
-              // Action when Menu 1 is tapped
+              _loadInterstitialAd();
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => BundesligaPage(),
+                ),
+              );
             },
           ),
           ListTile(
@@ -165,7 +185,13 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
             onTap: () {
-              // Action when Menu 1 is tapped
+              _loadInterstitialAd();
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => UclPage(),
+                ),
+              );
             },
           ),
           ListTile(
@@ -176,11 +202,17 @@ class _HomePageState extends State<HomePage> {
                   width: 30,
                 ),
                 SizedBox(width: 10),
-                Text('Arab Saudi League'),
+                Text('Saudi Pro League'),
               ],
             ),
             onTap: () {
-              // Action when Menu 1 is tapped
+              _loadInterstitialAd();
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => SaudiProLeaguePage(),
+                ),
+              );
             },
           ),
         ],

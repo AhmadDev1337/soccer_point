@@ -6,14 +6,14 @@ import 'items premier league/classement.dart';
 import 'items premier league/timetable.dart';
 import 'items premier league/top_score.dart';
 
-class PremierLeaguePage extends StatefulWidget {
-  const PremierLeaguePage({super.key});
+class WorldCupPage extends StatefulWidget {
+  const WorldCupPage({super.key});
 
   @override
-  State<PremierLeaguePage> createState() => _PremierLeaguePageState();
+  State<WorldCupPage> createState() => _WorldCupPageState();
 }
 
-class _PremierLeaguePageState extends State<PremierLeaguePage> {
+class _WorldCupPageState extends State<WorldCupPage> {
   int currentPageIndex = 0;
 
   final List<String> items = [

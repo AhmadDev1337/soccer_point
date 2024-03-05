@@ -2,18 +2,18 @@
 
 import 'package:flutter/material.dart';
 
-import 'items premier league/classement.dart';
-import 'items premier league/timetable.dart';
-import 'items premier league/top_score.dart';
+import 'items ucl/classement.dart';
+import 'items ucl/timetable.dart';
+import 'items ucl/top_score.dart';
 
-class PremierLeaguePage extends StatefulWidget {
-  const PremierLeaguePage({super.key});
+class UclPage extends StatefulWidget {
+  const UclPage({super.key});
 
   @override
-  State<PremierLeaguePage> createState() => _PremierLeaguePageState();
+  State<UclPage> createState() => _UclPageState();
 }
 
-class _PremierLeaguePageState extends State<PremierLeaguePage> {
+class _UclPageState extends State<UclPage> {
   int currentPageIndex = 0;
 
   final List<String> items = [
@@ -91,7 +91,7 @@ class _PremierLeaguePageState extends State<PremierLeaguePage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "English Premier League",
+                        "UEFA Champions League",
                         style: TextStyle(
                             fontWeight: FontWeight.w700,
                             fontSize: 15,
@@ -108,7 +108,7 @@ class _PremierLeaguePageState extends State<PremierLeaguePage> {
                           ),
                           SizedBox(width: 8),
                           Text(
-                            "England",
+                            "Europe",
                             style: TextStyle(color: Colors.white),
                           ),
                         ],
