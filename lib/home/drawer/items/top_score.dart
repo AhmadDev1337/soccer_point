@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'dart:convert';
 
@@ -88,65 +88,111 @@ class _TopScorePageState extends State<TopScorePage> {
         : Column(
             children: [
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 15),
+                padding: const EdgeInsets.symmetric(horizontal: 15),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Column(
-                      children: [
-                        Text(
-                          "Player",
-                          style: TextStyle(fontSize: 13, color: Colors.grey),
-                        ),
-                        SizedBox(height: 15),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: matchsList.map((matchs) {
-                            return Padding(
-                              padding: EdgeInsets.only(bottom: 10),
-                              child: Row(
-                                children: [
-                                  Image.network(matchs.image1, width: 20),
-                                  SizedBox(width: 5),
-                                  Image.network(matchs.image2, width: 20),
-                                  SizedBox(width: 10),
-                                  Text(
-                                    matchs.player,
-                                    style: TextStyle(
-                                        fontSize: 11, color: Colors.grey),
-                                  ),
-                                ],
-                              ),
-                            );
-                          }).toList(),
-                        ),
-                      ],
+                    Text(
+                      "Player",
+                      style: TextStyle(fontSize: 13, color: Colors.grey),
                     ),
-                    Column(
-                      children: [
-                        Text(
-                          "Goal",
-                          style: TextStyle(fontSize: 13, color: Colors.grey),
-                        ),
-                        SizedBox(height: 15),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: matchsList.map((matchs) {
-                            return Padding(
-                              padding: EdgeInsets.only(bottom: 10),
-                              child: Text(
-                                matchs.goal,
-                                style:
-                                    TextStyle(fontSize: 11, color: Colors.grey),
-                              ),
-                            );
-                          }).toList(),
-                        ),
-                      ],
+                    Text(
+                      "Goal",
+                      style: TextStyle(fontSize: 13, color: Colors.grey),
                     ),
                   ],
                 ),
               ),
+              SizedBox(height: 15),
+              Column(
+                children: matchsList.map((matchs) {
+                  return Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 15, vertical: 3),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Image.network(matchs.image1, width: 20),
+                            SizedBox(width: 5),
+                            Image.network(matchs.image2, width: 20),
+                            SizedBox(width: 10),
+                            Text(
+                              matchs.player,
+                              style:
+                                  TextStyle(fontSize: 13, color: Colors.grey),
+                            ),
+                          ],
+                        ),
+                        Text(
+                          matchs.goal,
+                          style: TextStyle(fontSize: 13, color: Colors.grey),
+                        ),
+                      ],
+                    ),
+                  );
+                }).toList(),
+              ),
+              // Padding(
+              //   padding: EdgeInsets.symmetric(horizontal: 15),
+              //   child: Row(
+              //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //     children: [
+              //       Column(
+              //         children: [
+              //           Text(
+              //             "Player",
+              //             style: TextStyle(fontSize: 13, color: Colors.grey),
+              //           ),
+              //           SizedBox(height: 15),
+              //           Column(
+              //             crossAxisAlignment: CrossAxisAlignment.start,
+              //             children: matchsList.map((matchs) {
+              //               return Padding(
+              //                 padding: EdgeInsets.only(bottom: 10),
+              //                 child: Row(
+              //                   children: [
+              //                     Image.network(matchs.image1, width: 20),
+              //                     SizedBox(width: 5),
+              //                     Image.network(matchs.image2, width: 20),
+              //                     SizedBox(width: 10),
+              //                     Text(
+              //                       matchs.player,
+              //                       style: TextStyle(
+              //                           fontSize: 13, color: Colors.grey),
+              //                     ),
+              //                   ],
+              //                 ),
+              //               );
+              //             }).toList(),
+              //           ),
+              //         ],
+              //       ),
+              //       Column(
+              //         children: [
+              //           Text(
+              //             "Goal",
+              //             style: TextStyle(fontSize: 13, color: Colors.grey),
+              //           ),
+              //           SizedBox(height: 15),
+              //           Column(
+              //             crossAxisAlignment: CrossAxisAlignment.start,
+              //             children: matchsList.map((matchs) {
+              //               return Padding(
+              //                 padding: EdgeInsets.only(bottom: 10),
+              //                 child: Text(
+              //                   matchs.goal,
+              //                   style:
+              //                       TextStyle(fontSize: 13, color: Colors.grey),
+              //                 ),
+              //               );
+              //             }).toList(),
+              //           ),
+              //         ],
+              //       ),
+              //     ],
+              //   ),
+              // ),
             ],
           );
   }

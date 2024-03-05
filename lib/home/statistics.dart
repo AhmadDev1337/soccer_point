@@ -32,8 +32,8 @@ class JsonData {
   final String offsides2;
   final String cornerKicks1;
   final String cornerKicks2;
-  final String saves1;
-  final String saves2;
+  final String violation1;
+  final String violation2;
 
   JsonData({
     required this.image1,
@@ -60,8 +60,8 @@ class JsonData {
     required this.offsides2,
     required this.cornerKicks1,
     required this.cornerKicks2,
-    required this.saves1,
-    required this.saves2,
+    required this.violation1,
+    required this.violation2,
   });
 }
 
@@ -111,8 +111,8 @@ class _StatisticsPageState extends State<StatisticsPage> {
             offsides2: data['offsides2'],
             cornerKicks1: data['cornerKicks1'],
             cornerKicks2: data['cornerKicks2'],
-            saves1: data['saves1'],
-            saves2: data['saves2'],
+            violation1: data['violation1'],
+            violation2: data['violation2'],
           );
         }).toList();
 
@@ -504,21 +504,21 @@ class _StatisticsPageState extends State<StatisticsPage> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
-                                    jsonData.saves1,
+                                    jsonData.violation1,
                                     style: const TextStyle(
                                       color: Colors.grey,
                                       fontSize: 13,
                                     ),
                                   ),
                                   const Text(
-                                    "Saves",
+                                    "Violation",
                                     style: TextStyle(
                                       color: Colors.grey,
                                       fontSize: 13,
                                     ),
                                   ),
                                   Text(
-                                    jsonData.saves2,
+                                    jsonData.violation2,
                                     style: const TextStyle(
                                         color: Colors.grey, fontSize: 13),
                                   ),

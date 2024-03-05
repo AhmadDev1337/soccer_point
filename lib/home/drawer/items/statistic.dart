@@ -116,7 +116,7 @@ class _StatisticPageState extends State<StatisticPage> {
               Column(
                 children: matchsList.map((matchs) {
                   return Padding(
-                    padding: EdgeInsets.only(bottom: 15),
+                    padding: EdgeInsets.only(bottom: 15, left: 10),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -132,7 +132,7 @@ class _StatisticPageState extends State<StatisticPage> {
                                   Text(
                                     matchs.team1,
                                     style: TextStyle(
-                                        fontSize: 11, color: Colors.grey),
+                                        fontSize: 13, color: Colors.grey),
                                   ),
                                 ],
                               ),
@@ -145,7 +145,7 @@ class _StatisticPageState extends State<StatisticPage> {
                                   Text(
                                     matchs.date,
                                     style: const TextStyle(
-                                        color: Colors.grey, fontSize: 11),
+                                        color: Colors.grey, fontSize: 13),
                                   ),
                                 ],
                               ),
@@ -165,7 +165,7 @@ class _StatisticPageState extends State<StatisticPage> {
                                   Text(
                                     matchs.team2,
                                     style: TextStyle(
-                                        fontSize: 11, color: Colors.grey),
+                                        fontSize: 13, color: Colors.grey),
                                   ),
                                 ],
                               ),
@@ -178,7 +178,7 @@ class _StatisticPageState extends State<StatisticPage> {
                                   Text(
                                     matchs.time,
                                     style: const TextStyle(
-                                        color: Colors.grey, fontSize: 11),
+                                        color: Colors.grey, fontSize: 13),
                                   ),
                                 ],
                               ),

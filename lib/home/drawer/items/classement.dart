@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'dart:convert';
 
@@ -94,142 +94,255 @@ class _ClassementPageState extends State<ClassementPage> {
         : Column(
             children: [
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 15),
+                padding: const EdgeInsets.symmetric(horizontal: 15),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Column(
-                      children: [
-                        Text(
-                          "Club",
-                          style: TextStyle(fontSize: 13, color: Colors.grey),
-                        ),
-                        SizedBox(height: 15),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: matchsList.map((matchs) {
-                            return Padding(
-                              padding: EdgeInsets.only(bottom: 10),
-                              child: Row(
-                                children: [
-                                  Image.network(matchs.image, width: 20),
-                                  SizedBox(width: 10),
-                                  Text(
-                                    matchs.club,
-                                    style: TextStyle(
-                                        fontSize: 11, color: Colors.grey),
-                                  ),
-                                ],
-                              ),
-                            );
-                          }).toList(),
-                        ),
-                      ],
+                    Text(
+                      "Club",
+                      style: TextStyle(fontSize: 13, color: Colors.grey),
                     ),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        Column(
-                          children: [
-                            Text(
-                              "W",
-                              style:
-                                  TextStyle(fontSize: 13, color: Colors.grey),
-                            ),
-                            SizedBox(height: 15),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: matchsList.map((matchs) {
-                                return Padding(
-                                  padding: EdgeInsets.only(bottom: 10),
-                                  child: Text(
-                                    matchs.win,
-                                    style: TextStyle(
-                                        fontSize: 11, color: Colors.grey),
-                                  ),
-                                );
-                              }).toList(),
-                            ),
-                          ],
-                        ),
-                        SizedBox(width: 25),
-                        Column(
-                          children: [
-                            Text(
-                              "D",
-                              style:
-                                  TextStyle(fontSize: 13, color: Colors.grey),
-                            ),
-                            SizedBox(height: 15),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: matchsList.map((matchs) {
-                                return Padding(
-                                  padding: EdgeInsets.only(bottom: 10),
-                                  child: Text(
-                                    matchs.draw,
-                                    style: TextStyle(
-                                        fontSize: 11, color: Colors.grey),
-                                  ),
-                                );
-                              }).toList(),
-                            ),
-                          ],
-                        ),
-                        SizedBox(width: 25),
-                        Column(
-                          children: [
-                            Text(
-                              "L",
-                              style:
-                                  TextStyle(fontSize: 13, color: Colors.grey),
-                            ),
-                            SizedBox(height: 15),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: matchsList.map((matchs) {
-                                return Padding(
-                                  padding: EdgeInsets.only(bottom: 10),
-                                  child: Text(
-                                    matchs.lose,
-                                    style: TextStyle(
-                                        fontSize: 11, color: Colors.grey),
-                                  ),
-                                );
-                              }).toList(),
-                            ),
-                          ],
+                        Container(
+                          child: Row(
+                            children: [
+                              Text(
+                                "W",
+                                style:
+                                    TextStyle(fontSize: 13, color: Colors.grey),
+                              ),
+                              SizedBox(
+                                width: 25,
+                              ),
+                              Text(
+                                "D",
+                                style:
+                                    TextStyle(fontSize: 13, color: Colors.grey),
+                              ),
+                              SizedBox(
+                                width: 25,
+                              ),
+                              Text(
+                                "L",
+                                style:
+                                    TextStyle(fontSize: 13, color: Colors.grey),
+                              ),
+                            ],
+                          ),
                         ),
                         SizedBox(width: 30),
-                        Column(
-                          children: [
-                            Text(
-                              "Points",
-                              style:
-                                  TextStyle(fontSize: 13, color: Colors.grey),
-                            ),
-                            SizedBox(height: 15),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: matchsList.map((matchs) {
-                                return Padding(
-                                  padding: EdgeInsets.only(bottom: 10),
-                                  child: Text(
-                                    matchs.points,
-                                    style: TextStyle(
-                                        fontSize: 11, color: Colors.grey),
-                                  ),
-                                );
-                              }).toList(),
-                            ),
-                          ],
+                        Text(
+                          "Points",
+                          style: TextStyle(fontSize: 13, color: Colors.grey),
                         ),
                       ],
                     ),
                   ],
                 ),
               ),
+              SizedBox(height: 15),
+              Column(
+                children: matchsList.map((matchs) {
+                  return Padding(
+                    padding: EdgeInsets.only(left: 15, bottom: 5, right: 25),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Image.network(matchs.image, width: 20),
+                            SizedBox(width: 10),
+                            Text(
+                              matchs.club,
+                              style:
+                                  TextStyle(fontSize: 13, color: Colors.grey),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Row(
+                              children: [
+                                Text(
+                                  matchs.win,
+                                  style: TextStyle(
+                                      fontSize: 13, color: Colors.grey),
+                                ),
+                                SizedBox(
+                                  width: 28,
+                                ),
+                                Text(
+                                  matchs.draw,
+                                  style: TextStyle(
+                                      fontSize: 13, color: Colors.grey),
+                                ),
+                                SizedBox(
+                                  width: 28,
+                                ),
+                                Text(
+                                  matchs.lose,
+                                  style: TextStyle(
+                                      fontSize: 13, color: Colors.grey),
+                                ),
+                              ],
+                            ),
+                            SizedBox(width: 38),
+                            Text(
+                              matchs.points,
+                              style:
+                                  TextStyle(fontSize: 13, color: Colors.grey),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  );
+                }).toList(),
+              ),
             ],
           );
+    // Column(
+    //     children: [
+    //       Padding(
+    //         padding: EdgeInsets.symmetric(horizontal: 15),
+    //         child: Row(
+    //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    //           children: [
+    //             Column(
+    //               children: [
+    //                 Text(
+    //                   "Club",
+    //                   style: TextStyle(fontSize: 13, color: Colors.grey),
+    //                 ),
+    //                 SizedBox(height: 15),
+    //                 Column(
+    //                   crossAxisAlignment: CrossAxisAlignment.start,
+    //                   children: matchsList.map((matchs) {
+    //                     return Padding(
+    //                       padding: EdgeInsets.only(bottom: 10),
+    //                       child: Row(
+    //                         children: [
+    //                           Image.network(matchs.image, width: 20),
+    //                           SizedBox(width: 10),
+    //                           Text(
+    //                             matchs.club,
+    //                             style: TextStyle(
+    //                                 fontSize: 11, color: Colors.grey),
+    //                           ),
+    //                         ],
+    //                       ),
+    //                     );
+    //                   }).toList(),
+    //                 ),
+    //               ],
+    //             ),
+    //             Row(
+    //               crossAxisAlignment: CrossAxisAlignment.end,
+    //               children: [
+    //                 Column(
+    //                   children: [
+    //                     Text(
+    //                       "W",
+    //                       style:
+    //                           TextStyle(fontSize: 13, color: Colors.grey),
+    //                     ),
+    //                     SizedBox(height: 15),
+    //                     Column(
+    //                       crossAxisAlignment: CrossAxisAlignment.start,
+    //                       children: matchsList.map((matchs) {
+    //                         return Padding(
+    //                           padding: EdgeInsets.only(bottom: 10),
+    //                           child: Text(
+    //                             matchs.win,
+    //                             style: TextStyle(
+    //                                 fontSize: 11, color: Colors.grey),
+    //                           ),
+    //                         );
+    //                       }).toList(),
+    //                     ),
+    //                   ],
+    //                 ),
+    //                 SizedBox(width: 25),
+    //                 Column(
+    //                   children: [
+    //                     Text(
+    //                       "D",
+    //                       style:
+    //                           TextStyle(fontSize: 13, color: Colors.grey),
+    //                     ),
+    //                     SizedBox(height: 15),
+    //                     Column(
+    //                       crossAxisAlignment: CrossAxisAlignment.start,
+    //                       children: matchsList.map((matchs) {
+    //                         return Padding(
+    //                           padding: EdgeInsets.only(bottom: 10),
+    //                           child: Text(
+    //                             matchs.draw,
+    //                             style: TextStyle(
+    //                                 fontSize: 11, color: Colors.grey),
+    //                           ),
+    //                         );
+    //                       }).toList(),
+    //                     ),
+    //                   ],
+    //                 ),
+    //                 SizedBox(width: 25),
+    //                 Column(
+    //                   children: [
+    //                     Text(
+    //                       "L",
+    //                       style:
+    //                           TextStyle(fontSize: 13, color: Colors.grey),
+    //                     ),
+    //                     SizedBox(height: 15),
+    //                     Column(
+    //                       crossAxisAlignment: CrossAxisAlignment.start,
+    //                       children: matchsList.map((matchs) {
+    //                         return Padding(
+    //                           padding: EdgeInsets.only(bottom: 10),
+    //                           child: Text(
+    //                             matchs.lose,
+    //                             style: TextStyle(
+    //                                 fontSize: 11, color: Colors.grey),
+    //                           ),
+    //                         );
+    //                       }).toList(),
+    //                     ),
+    //                   ],
+    //                 ),
+    //                 SizedBox(width: 30),
+    //                 Column(
+    //                   children: [
+    //                     Text(
+    //                       "Points",
+    //                       style:
+    //                           TextStyle(fontSize: 13, color: Colors.grey),
+    //                     ),
+    //                     SizedBox(height: 15),
+    //                     Column(
+    //                       crossAxisAlignment: CrossAxisAlignment.start,
+    //                       children: matchsList.map((matchs) {
+    //                         return Padding(
+    //                           padding: EdgeInsets.only(bottom: 10),
+    //                           child: Text(
+    //                             matchs.points,
+    //                             style: TextStyle(
+    //                                 fontSize: 11, color: Colors.grey),
+    //                           ),
+    //                         );
+    //                       }).toList(),
+    //                     ),
+    //                   ],
+    //                 ),
+    //               ],
+    //             ),
+    //           ],
+    //         ),
+    //       ),
+    //     ],
+    //   );
   }
 }
