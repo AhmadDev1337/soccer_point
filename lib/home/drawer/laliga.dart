@@ -103,7 +103,7 @@ class _LaligaPageState extends State<LaligaPage> {
                       Row(
                         children: [
                           Image.asset(
-                            "assets/images/england.png",
+                            "assets/images/spain.png",
                             width: 15,
                           ),
                           SizedBox(width: 8),

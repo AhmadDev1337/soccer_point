@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_element, unused_field, avoid_unnecessary_containers
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_element, unused_field, avoid_unnecessary_containers, sized_box_for_whitespace
 
 import 'dart:convert';
 import 'dart:developer';
@@ -8,10 +8,14 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:http/http.dart' as http;
 
+import 'drawer/asean cup.dart';
+import 'drawer/asian_cup.dart';
 import 'drawer/bundesliga.dart';
+import 'drawer/euro.dart';
 import 'drawer/laliga.dart';
 import 'drawer/premier_league.dart';
 import 'drawer/saudi_pro_league.dart';
+import 'drawer/serie_a.dart';
 import 'drawer/ucl.dart';
 
 class LiveMatch {
@@ -98,16 +102,39 @@ class _HomePageState extends State<HomePage> {
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
-          DrawerHeader(
-            decoration: BoxDecoration(
-              color: Color.fromARGB(255, 1, 6, 34),
-            ),
-            child: Text(
-              'Soccer Point',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 24,
-              ),
+          Container(
+            height: MediaQuery.of(context).size.height * 0.3,
+            child: Stack(
+              fit: StackFit.expand,
+              children: [
+                Image.asset(
+                  "assets/images/images (1).jpeg",
+                  fit: BoxFit.fill,
+                ),
+                Container(
+                  height: double.infinity,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.bottomCenter,
+                      end: Alignment.topCenter,
+                      colors: [
+                        Color.fromARGB(255, 1, 6, 34),
+                        Color.fromARGB(255, 1, 6, 34).withOpacity(0.6),
+                      ],
+                    ),
+                  ),
+                  child: Center(
+                    child: Text(
+                      "Soccer Point",
+                      style: TextStyle(
+                          color: Colors.grey,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 25),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
           ListTile(
@@ -116,9 +143,10 @@ class _HomePageState extends State<HomePage> {
                 Image.asset(
                   "assets/images/laliga.png",
                   width: 30,
+                  color: Color.fromARGB(255, 1, 6, 34),
                 ),
                 SizedBox(width: 10),
-                Text('La Liga'),
+                Text('Laliga'),
               ],
             ),
             onTap: () {
@@ -137,6 +165,7 @@ class _HomePageState extends State<HomePage> {
                 Image.asset(
                   "assets/images/images-removebg-preview (1).png",
                   width: 30,
+                  color: Color.fromARGB(255, 1, 6, 34),
                 ),
                 SizedBox(width: 10),
                 Text('Premier League'),
@@ -156,8 +185,31 @@ class _HomePageState extends State<HomePage> {
             title: Row(
               children: [
                 Image.asset(
+                  "assets/images/serie a.png",
+                  color: Color.fromARGB(255, 1, 6, 34),
+                  width: 30,
+                ),
+                SizedBox(width: 10),
+                Text('Serie A'),
+              ],
+            ),
+            onTap: () {
+              _loadInterstitialAd();
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => SerieAPage(),
+                ),
+              );
+            },
+          ),
+          ListTile(
+            title: Row(
+              children: [
+                Image.asset(
                   "assets/images/bundesliga.png",
                   width: 30,
+                  color: Color.fromARGB(255, 1, 6, 34),
                 ),
                 SizedBox(width: 10),
                 Text('Bundesliga'),
@@ -177,8 +229,9 @@ class _HomePageState extends State<HomePage> {
             title: Row(
               children: [
                 Image.asset(
-                  "assets/images/asl.png",
+                  "assets/images/ucl.png",
                   width: 30,
+                  color: Color.fromARGB(255, 1, 6, 34),
                 ),
                 SizedBox(width: 10),
                 Text('UCL'),
@@ -200,6 +253,7 @@ class _HomePageState extends State<HomePage> {
                 Image.asset(
                   "assets/images/asl.png",
                   width: 30,
+                  color: Color.fromARGB(255, 1, 6, 34),
                 ),
                 SizedBox(width: 10),
                 Text('Saudi Pro League'),
@@ -211,6 +265,72 @@ class _HomePageState extends State<HomePage> {
                 context,
                 MaterialPageRoute(
                   builder: (context) => SaudiProLeaguePage(),
+                ),
+              );
+            },
+          ),
+          ListTile(
+            title: Row(
+              children: [
+                Image.asset(
+                  "assets/images/euro cup 2024.png",
+                  width: 30,
+                  color: Color.fromARGB(255, 1, 6, 34),
+                ),
+                SizedBox(width: 10),
+                Text('EURO'),
+              ],
+            ),
+            onTap: () {
+              _loadInterstitialAd();
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => EuroPage(),
+                ),
+              );
+            },
+          ),
+          ListTile(
+            title: Row(
+              children: [
+                Image.asset(
+                  "assets/images/asean cup.png",
+                  width: 30,
+                  color: Color.fromARGB(255, 1, 6, 34),
+                ),
+                SizedBox(width: 10),
+                Text('ASEAN Cup'),
+              ],
+            ),
+            onTap: () {
+              _loadInterstitialAd();
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => AseanCupPage(),
+                ),
+              );
+            },
+          ),
+          ListTile(
+            title: Row(
+              children: [
+                Image.asset(
+                  "assets/images/asian cup.png",
+                  width: 30,
+                  color: Color.fromARGB(255, 1, 6, 34),
+                ),
+                SizedBox(width: 10),
+                Text('ASIAN Cup'),
+              ],
+            ),
+            onTap: () {
+              _loadInterstitialAd();
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => AsianCupPage(),
                 ),
               );
             },

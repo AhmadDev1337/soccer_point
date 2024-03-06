@@ -82,7 +82,7 @@ class _SerieAPageState extends State<SerieAPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Image.asset(
-                    "assets/images/images-removebg-preview (1).png",
+                    "assets/images/serie a.png",
                     width: 70,
                     color: Colors.white,
                   ),
@@ -91,7 +91,7 @@ class _SerieAPageState extends State<SerieAPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "English Premier League",
+                        "Serie A",
                         style: TextStyle(
                             fontWeight: FontWeight.w700,
                             fontSize: 15,
@@ -103,12 +103,12 @@ class _SerieAPageState extends State<SerieAPage> {
                       Row(
                         children: [
                           Image.asset(
-                            "assets/images/england.png",
+                            "assets/images/italia.png",
                             width: 15,
                           ),
                           SizedBox(width: 8),
                           Text(
-                            "England",
+                            "Italia",
                             style: TextStyle(color: Colors.white),
                           ),
                         ],

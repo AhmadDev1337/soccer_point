@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers
 
 import 'dart:convert';
 
@@ -36,7 +36,7 @@ class _ClassementPageState extends State<ClassementPage> {
   bool isLoading = true;
 
   Future<void> match() async {
-    const singleJsonUrl = "https://pastebin.com/raw/NT60V82J";
+    const singleJsonUrl = "https://pastebin.com/raw/zgEYXPC4";
 
     try {
       final response = await http.get(Uri.parse(singleJsonUrl));

@@ -103,7 +103,7 @@ class _BundesligaPageState extends State<BundesligaPage> {
                       Row(
                         children: [
                           Image.asset(
-                            "assets/images/england.png",
+                            "assets/images/german.png",
                             width: 15,
                           ),
                           SizedBox(width: 8),
