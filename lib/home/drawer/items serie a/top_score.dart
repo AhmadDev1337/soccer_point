@@ -32,7 +32,7 @@ class _TopScorePageState extends State<TopScorePage> {
   bool isLoading = true;
 
   Future<void> match() async {
-    const singleJsonUrl = "https://pastebin.com/raw/33SCkHyy";
+    const singleJsonUrl = "https://pastebin.com/raw/u7FkUmGU";
 
     try {
       final response = await http.get(Uri.parse(singleJsonUrl));

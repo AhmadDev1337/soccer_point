@@ -17,6 +17,7 @@ import 'drawer/premier_league.dart';
 import 'drawer/saudi_pro_league.dart';
 import 'drawer/serie_a.dart';
 import 'drawer/ucl.dart';
+import 'drawer/world_cup.dart';
 
 class LiveMatch {
   final String image;
@@ -74,7 +75,24 @@ class _HomePageState extends State<HomePage> {
   bool isLoading = true;
   InterstitialAd? _interstitialAd;
 
-  void _loadInterstitialAd() {
+  void _loadInterstitialAd1() {
+    InterstitialAd.load(
+      adUnitId: 'ca-app-pub-8363980854824352/1855426932',
+      request: AdRequest(),
+      adLoadCallback: InterstitialAdLoadCallback(
+        onAdLoaded: (InterstitialAd ad) {
+          _interstitialAd = ad;
+          _interstitialAd!.show();
+          log('Ad onAdLoaded');
+        },
+        onAdFailedToLoad: (LoadAdError error) {
+          log('Interstitial ad failed to load: $error');
+        },
+      ),
+    );
+  }
+
+  void _loadInterstitialAd2() {
     InterstitialAd.load(
       adUnitId: 'ca-app-pub-8363980854824352/2854697735',
       request: AdRequest(),
@@ -89,6 +107,159 @@ class _HomePageState extends State<HomePage> {
         },
       ),
     );
+  }
+
+  void _loadInterstitialAd3() {
+    InterstitialAd.load(
+      adUnitId: 'ca-app-pub-8363980854824352/1663855240',
+      request: AdRequest(),
+      adLoadCallback: InterstitialAdLoadCallback(
+        onAdLoaded: (InterstitialAd ad) {
+          _interstitialAd = ad;
+          _interstitialAd!.show();
+          log('Ad onAdLoaded');
+        },
+        onAdFailedToLoad: (LoadAdError error) {
+          log('Interstitial ad failed to load: $error');
+        },
+      ),
+    );
+  }
+
+  void _loadInterstitialAd4() {
+    InterstitialAd.load(
+      adUnitId: 'ca-app-pub-8363980854824352/1173487389',
+      request: AdRequest(),
+      adLoadCallback: InterstitialAdLoadCallback(
+        onAdLoaded: (InterstitialAd ad) {
+          _interstitialAd = ad;
+          _interstitialAd!.show();
+          log('Ad onAdLoaded');
+        },
+        onAdFailedToLoad: (LoadAdError error) {
+          log('Interstitial ad failed to load: $error');
+        },
+      ),
+    );
+  }
+
+  void _loadInterstitialAd5() {
+    InterstitialAd.load(
+      adUnitId: 'ca-app-pub-8363980854824352/6581726738',
+      request: AdRequest(),
+      adLoadCallback: InterstitialAdLoadCallback(
+        onAdLoaded: (InterstitialAd ad) {
+          _interstitialAd = ad;
+          _interstitialAd!.show();
+          log('Ad onAdLoaded');
+        },
+        onAdFailedToLoad: (LoadAdError error) {
+          log('Interstitial ad failed to load: $error');
+        },
+      ),
+    );
+  }
+
+  void _loadInterstitialAd6() {
+    InterstitialAd.load(
+      adUnitId: 'ca-app-pub-8363980854824352/8860405719',
+      request: AdRequest(),
+      adLoadCallback: InterstitialAdLoadCallback(
+        onAdLoaded: (InterstitialAd ad) {
+          _interstitialAd = ad;
+          _interstitialAd!.show();
+          log('Ad onAdLoaded');
+        },
+        onAdFailedToLoad: (LoadAdError error) {
+          log('Interstitial ad failed to load: $error');
+        },
+      ),
+    );
+  }
+
+  void _loadInterstitialAd7() {
+    InterstitialAd.load(
+      adUnitId: 'ca-app-pub-8363980854824352/6390155049',
+      request: AdRequest(),
+      adLoadCallback: InterstitialAdLoadCallback(
+        onAdLoaded: (InterstitialAd ad) {
+          _interstitialAd = ad;
+          _interstitialAd!.show();
+          log('Ad onAdLoaded');
+        },
+        onAdFailedToLoad: (LoadAdError error) {
+          log('Interstitial ad failed to load: $error');
+        },
+      ),
+    );
+  }
+
+  void _loadInterstitialAd8() {
+    InterstitialAd.load(
+      adUnitId: 'ca-app-pub-8363980854824352/7244071711',
+      request: AdRequest(),
+      adLoadCallback: InterstitialAdLoadCallback(
+        onAdLoaded: (InterstitialAd ad) {
+          _interstitialAd = ad;
+          _interstitialAd!.show();
+          log('Ad onAdLoaded');
+        },
+        onAdFailedToLoad: (LoadAdError error) {
+          log('Interstitial ad failed to load: $error');
+        },
+      ),
+    );
+  }
+
+  void _loadInterstitialAd9() {
+    InterstitialAd.load(
+      adUnitId: 'ca-app-pub-8363980854824352/4098446892',
+      request: AdRequest(),
+      adLoadCallback: InterstitialAdLoadCallback(
+        onAdLoaded: (InterstitialAd ad) {
+          _interstitialAd = ad;
+          _interstitialAd!.show();
+          log('Ad onAdLoaded');
+        },
+        onAdFailedToLoad: (LoadAdError error) {
+          log('Interstitial ad failed to load: $error');
+        },
+      ),
+    );
+  }
+
+  void _loadInterstitialAd10() {
+    InterstitialAd.load(
+      adUnitId: 'ca-app-pub-8363980854824352/6234242374',
+      request: AdRequest(),
+      adLoadCallback: InterstitialAdLoadCallback(
+        onAdLoaded: (InterstitialAd ad) {
+          _interstitialAd = ad;
+          _interstitialAd!.show();
+          log('Ad onAdLoaded');
+        },
+        onAdFailedToLoad: (LoadAdError error) {
+          log('Interstitial ad failed to load: $error');
+        },
+      ),
+    );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    liveMatch();
+    match();
+    _loadInterstitialAd1();
+    _loadInterstitialAd2();
+    _loadInterstitialAd3();
+    _loadInterstitialAd4();
+    _loadInterstitialAd5();
+    _loadInterstitialAd6();
+    _loadInterstitialAd7();
+    _loadInterstitialAd8();
+    _loadInterstitialAd9();
+    _loadInterstitialAd10();
   }
 
   void _openDrawer() {
@@ -150,7 +321,7 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
             onTap: () {
-              _loadInterstitialAd();
+              _loadInterstitialAd1();
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -172,7 +343,7 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
             onTap: () {
-              _loadInterstitialAd();
+              _loadInterstitialAd2();
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -194,7 +365,7 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
             onTap: () {
-              _loadInterstitialAd();
+              _loadInterstitialAd3();
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -216,7 +387,7 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
             onTap: () {
-              _loadInterstitialAd();
+              _loadInterstitialAd4();
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -238,7 +409,7 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
             onTap: () {
-              _loadInterstitialAd();
+              _loadInterstitialAd5();
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -260,7 +431,7 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
             onTap: () {
-              _loadInterstitialAd();
+              _loadInterstitialAd6();
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -273,7 +444,7 @@ class _HomePageState extends State<HomePage> {
             title: Row(
               children: [
                 Image.asset(
-                  "assets/images/euro cup 2024.png",
+                  "assets/images/euro cup.png",
                   width: 30,
                   color: Color.fromARGB(255, 1, 6, 34),
                 ),
@@ -282,11 +453,33 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
             onTap: () {
-              _loadInterstitialAd();
+              _loadInterstitialAd7();
               Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => EuroPage(),
+                ),
+              );
+            },
+          ),
+          ListTile(
+            title: Row(
+              children: [
+                Image.asset(
+                  "assets/images/world cup.png",
+                  width: 30,
+                  color: Color.fromARGB(255, 1, 6, 34),
+                ),
+                SizedBox(width: 10),
+                Text('WORLD Cup'),
+              ],
+            ),
+            onTap: () {
+              _loadInterstitialAd8();
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => WorldCupPage(),
                 ),
               );
             },
@@ -304,7 +497,7 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
             onTap: () {
-              _loadInterstitialAd();
+              _loadInterstitialAd9();
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -326,7 +519,7 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
             onTap: () {
-              _loadInterstitialAd();
+              _loadInterstitialAd10();
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -338,14 +531,6 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
     );
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    liveMatch();
-    match();
-    _loadInterstitialAd();
   }
 
   Future<void> liveMatch() async {

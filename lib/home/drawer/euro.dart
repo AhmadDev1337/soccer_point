@@ -82,7 +82,7 @@ class _EuroPageState extends State<EuroPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Image.asset(
-                    "assets/images/images-removebg-preview (1).png",
+                    "assets/images/euro cup.png",
                     width: 70,
                     color: Colors.white,
                   ),
@@ -91,7 +91,7 @@ class _EuroPageState extends State<EuroPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "English Premier League",
+                        "EURO Cup",
                         style: TextStyle(
                             fontWeight: FontWeight.w700,
                             fontSize: 15,
@@ -103,12 +103,12 @@ class _EuroPageState extends State<EuroPage> {
                       Row(
                         children: [
                           Image.asset(
-                            "assets/images/england.png",
+                            "assets/images/europe.png",
                             width: 15,
                           ),
                           SizedBox(width: 8),
                           Text(
-                            "England",
+                            "European",
                             style: TextStyle(color: Colors.white),
                           ),
                         ],

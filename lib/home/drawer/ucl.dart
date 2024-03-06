@@ -82,7 +82,7 @@ class _UclPageState extends State<UclPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Image.asset(
-                    "assets/images/images-removebg-preview (1).png",
+                    "assets/images/ucl.png",
                     width: 70,
                     color: Colors.white,
                   ),
@@ -103,7 +103,7 @@ class _UclPageState extends State<UclPage> {
                       Row(
                         children: [
                           Image.asset(
-                            "assets/images/england.png",
+                            "assets/images/europe.png",
                             width: 15,
                           ),
                           SizedBox(width: 8),

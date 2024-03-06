@@ -82,7 +82,7 @@ class _AsianCupPageState extends State<AsianCupPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Image.asset(
-                    "assets/images/images-removebg-preview (1).png",
+                    "assets/images/asian cup.png",
                     width: 70,
                     color: Colors.white,
                   ),
@@ -91,7 +91,7 @@ class _AsianCupPageState extends State<AsianCupPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "English Premier League",
+                        "ASIAN Cup",
                         style: TextStyle(
                             fontWeight: FontWeight.w700,
                             fontSize: 15,
@@ -103,12 +103,12 @@ class _AsianCupPageState extends State<AsianCupPage> {
                       Row(
                         children: [
                           Image.asset(
-                            "assets/images/england.png",
+                            "assets/images/international-1751293_1280.png",
                             width: 15,
                           ),
                           SizedBox(width: 8),
                           Text(
-                            "England",
+                            "Asia",
                             style: TextStyle(color: Colors.white),
                           ),
                         ],
