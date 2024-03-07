@@ -81,8 +81,8 @@ class _SaudiProLeaguePageState extends State<SaudiProLeaguePage> {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Image.asset(
-                    "assets/images/asl.png",
+                  Image.network(
+                    "https://res.cloudinary.com/dybvjvrib/image/upload/v1709234560/Soccer%20Point/League/asl_mhzcg7.png",
                     width: 70,
                     color: Colors.white,
                   ),
@@ -102,8 +102,8 @@ class _SaudiProLeaguePageState extends State<SaudiProLeaguePage> {
                       ),
                       Row(
                         children: [
-                          Image.asset(
-                            "assets/images/saudi arabia.png",
+                          Image.network(
+                            "https://res.cloudinary.com/dybvjvrib/image/upload/v1709657217/Soccer%20Point/International%20League/20240305_234532_cehzhr.png",
                             width: 15,
                           ),
                           SizedBox(width: 8),

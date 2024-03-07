@@ -81,8 +81,8 @@ class _PremierLeaguePageState extends State<PremierLeaguePage> {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Image.asset(
-                    "assets/images/images-removebg-preview (1).png",
+                  Image.network(
+                    "https://res.cloudinary.com/dybvjvrib/image/upload/v1709234584/Soccer%20Point/League/images-removebg-preview_1_jwr6tf.png",
                     width: 70,
                     color: Colors.white,
                   ),
@@ -102,8 +102,8 @@ class _PremierLeaguePageState extends State<PremierLeaguePage> {
                       ),
                       Row(
                         children: [
-                          Image.asset(
-                            "assets/images/england.png",
+                          Image.network(
+                            "https://res.cloudinary.com/dybvjvrib/image/upload/v1709656209/Soccer%20Point/International%20League/england_pygwxf.png",
                             width: 15,
                           ),
                           SizedBox(width: 8),

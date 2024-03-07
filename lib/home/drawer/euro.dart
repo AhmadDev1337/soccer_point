@@ -81,8 +81,8 @@ class _EuroPageState extends State<EuroPage> {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Image.asset(
-                    "assets/images/euro cup.png",
+                  Image.network(
+                    "https://res.cloudinary.com/dybvjvrib/image/upload/v1709786128/Soccer%20Point/League/euro_cup_clppft.png",
                     width: 70,
                     color: Colors.white,
                   ),
@@ -102,8 +102,8 @@ class _EuroPageState extends State<EuroPage> {
                       ),
                       Row(
                         children: [
-                          Image.asset(
-                            "assets/images/europe.png",
+                          Image.network(
+                            "https://res.cloudinary.com/dybvjvrib/image/upload/v1709786159/Soccer%20Point/League/europe_qbjstj.png",
                             width: 15,
                           ),
                           SizedBox(width: 8),

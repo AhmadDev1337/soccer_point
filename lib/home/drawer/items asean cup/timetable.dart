@@ -7,7 +7,6 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:http/http.dart' as http;
 
 class Matchs {
-  final String week;
   final String image1;
   final String team1;
   final String image2;
@@ -16,7 +15,6 @@ class Matchs {
   final String time;
 
   Matchs({
-    required this.week,
     required this.image1,
     required this.team1,
     required this.image2,
@@ -38,7 +36,7 @@ class _StatisticPageState extends State<StatisticPage> {
   bool isLoading = true;
 
   Future<void> match() async {
-    const singleJsonUrl = "https://pastebin.com/raw/xaZxCKiG";
+    const singleJsonUrl = "https://pastebin.com/raw/9D2bNUMY";
 
     try {
       final response = await http.get(Uri.parse(singleJsonUrl));
@@ -52,7 +50,6 @@ class _StatisticPageState extends State<StatisticPage> {
             team1: data['team1'],
             image2: data['image2'],
             team2: data['team2'],
-            week: data['week'],
           );
         }).toList();
 

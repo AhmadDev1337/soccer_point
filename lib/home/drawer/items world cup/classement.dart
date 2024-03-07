@@ -36,7 +36,7 @@ class _ClassementPageState extends State<ClassementPage> {
   bool isLoading = true;
 
   Future<void> match() async {
-    const singleJsonUrl = "https://pastebin.com/raw/NT60V82J";
+    const singleJsonUrl = "https://pastebin.com/raw/1K6UTDCy";
 
     try {
       final response = await http.get(Uri.parse(singleJsonUrl));

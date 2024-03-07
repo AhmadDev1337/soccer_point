@@ -2,9 +2,9 @@
 
 import 'package:flutter/material.dart';
 
-import 'items premier league/classement.dart';
-import 'items premier league/timetable.dart';
-import 'items premier league/top_score.dart';
+import 'items world cup/classement.dart';
+import 'items world cup/timetable.dart';
+import 'items world cup/top_score.dart';
 
 class WorldCupPage extends StatefulWidget {
   const WorldCupPage({super.key});
@@ -81,8 +81,8 @@ class _WorldCupPageState extends State<WorldCupPage> {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Image.asset(
-                    "assets/images/world cup.png",
+                  Image.network(
+                    "https://res.cloudinary.com/dybvjvrib/image/upload/v1709786210/Soccer%20Point/League/world_cup_ouvwu9.png",
                     width: 70,
                     color: Colors.white,
                   ),
@@ -102,8 +102,8 @@ class _WorldCupPageState extends State<WorldCupPage> {
                       ),
                       Row(
                         children: [
-                          Image.asset(
-                            "assets/images/international-1751293_1280.png",
+                          Image.network(
+                            "https://res.cloudinary.com/dybvjvrib/image/upload/v1709786849/Soccer%20Point/International%20League/international-1751293_1280_llsnyi.png",
                             width: 15,
                           ),
                           SizedBox(width: 8),

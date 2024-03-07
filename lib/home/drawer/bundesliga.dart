@@ -81,8 +81,8 @@ class _BundesligaPageState extends State<BundesligaPage> {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Image.asset(
-                    "assets/images/bundesliga.png",
+                  Image.network(
+                    "https://res.cloudinary.com/dybvjvrib/image/upload/v1709234563/Soccer%20Point/League/bundesliga_tddsb4.png",
                     width: 70,
                     color: Colors.white,
                   ),
@@ -102,8 +102,8 @@ class _BundesligaPageState extends State<BundesligaPage> {
                       ),
                       Row(
                         children: [
-                          Image.asset(
-                            "assets/images/german.png",
+                          Image.network(
+                            "https://res.cloudinary.com/dybvjvrib/image/upload/v1709657215/Soccer%20Point/International%20League/20240305_234437_cjlnri.png",
                             width: 15,
                           ),
                           SizedBox(width: 8),

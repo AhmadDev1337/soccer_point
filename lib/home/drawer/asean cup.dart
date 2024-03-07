@@ -81,8 +81,8 @@ class _AseanCupPageState extends State<AseanCupPage> {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Image.asset(
-                    "assets/images/asean cup.png",
+                  Image.network(
+                    "https://res.cloudinary.com/dybvjvrib/image/upload/v1709656283/Soccer%20Point/League/asean_cup_uaflkb.png",
                     width: 70,
                     color: Colors.white,
                   ),
@@ -102,8 +102,8 @@ class _AseanCupPageState extends State<AseanCupPage> {
                       ),
                       Row(
                         children: [
-                          Image.asset(
-                            "assets/images/asean.png",
+                          Image.network(
+                            "https://res.cloudinary.com/dybvjvrib/image/upload/v1709786076/Soccer%20Point/League/asean_jss2i1.png",
                             width: 15,
                           ),
                           SizedBox(width: 8),

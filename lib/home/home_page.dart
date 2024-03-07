@@ -278,8 +278,8 @@ class _HomePageState extends State<HomePage> {
             child: Stack(
               fit: StackFit.expand,
               children: [
-                Image.asset(
-                  "assets/images/images (1).jpeg",
+                Image.network(
+                  "https://res.cloudinary.com/dybvjvrib/image/upload/v1709786182/Soccer%20Point/League/images_1_dqzjbn.jpg",
                   fit: BoxFit.fill,
                 ),
                 Container(
@@ -311,8 +311,8 @@ class _HomePageState extends State<HomePage> {
           ListTile(
             title: Row(
               children: [
-                Image.asset(
-                  "assets/images/laliga.png",
+                Image.network(
+                  "https://res.cloudinary.com/dybvjvrib/image/upload/v1709656292/Soccer%20Point/League/laliga_baqrya.png",
                   width: 30,
                   color: Color.fromARGB(255, 1, 6, 34),
                 ),
@@ -321,20 +321,21 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
             onTap: () {
-              _loadInterstitialAd1();
+              
               Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => LaligaPage(),
                 ),
               );
+              _loadInterstitialAd1();
             },
           ),
           ListTile(
             title: Row(
               children: [
-                Image.asset(
-                  "assets/images/images-removebg-preview (1).png",
+                Image.network(
+                  "https://res.cloudinary.com/dybvjvrib/image/upload/v1709234584/Soccer%20Point/League/images-removebg-preview_1_jwr6tf.png",
                   width: 30,
                   color: Color.fromARGB(255, 1, 6, 34),
                 ),
@@ -343,20 +344,21 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
             onTap: () {
-              _loadInterstitialAd2();
+              
               Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => PremierLeaguePage(),
                 ),
               );
+              _loadInterstitialAd2();
             },
           ),
           ListTile(
             title: Row(
               children: [
-                Image.asset(
-                  "assets/images/serie a.png",
+                Image.network(
+                  "https://res.cloudinary.com/dybvjvrib/image/upload/v1709785848/Soccer%20Point/League/20240307_112809_ihiuv4.png",
                   color: Color.fromARGB(255, 1, 6, 34),
                   width: 30,
                 ),
@@ -365,20 +367,21 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
             onTap: () {
-              _loadInterstitialAd3();
+              
               Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => SerieAPage(),
                 ),
               );
+              _loadInterstitialAd3();
             },
           ),
           ListTile(
             title: Row(
               children: [
-                Image.asset(
-                  "assets/images/bundesliga.png",
+                Image.network(
+                  "https://res.cloudinary.com/dybvjvrib/image/upload/v1709234563/Soccer%20Point/League/bundesliga_tddsb4.png",
                   width: 30,
                   color: Color.fromARGB(255, 1, 6, 34),
                 ),
@@ -387,20 +390,21 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
             onTap: () {
-              _loadInterstitialAd4();
+              
               Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => BundesligaPage(),
                 ),
               );
+              _loadInterstitialAd4();
             },
           ),
           ListTile(
             title: Row(
               children: [
-                Image.asset(
-                  "assets/images/ucl.png",
+                Image.network(
+                  "https://res.cloudinary.com/dybvjvrib/image/upload/v1709656287/Soccer%20Point/League/ucl_r0kjw1.png",
                   width: 30,
                   color: Color.fromARGB(255, 1, 6, 34),
                 ),
@@ -409,20 +413,21 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
             onTap: () {
-              _loadInterstitialAd5();
+              
               Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => UclPage(),
                 ),
               );
+              _loadInterstitialAd5();
             },
           ),
           ListTile(
             title: Row(
               children: [
-                Image.asset(
-                  "assets/images/asl.png",
+                Image.network(
+                  "https://res.cloudinary.com/dybvjvrib/image/upload/v1709234560/Soccer%20Point/League/asl_mhzcg7.png",
                   width: 30,
                   color: Color.fromARGB(255, 1, 6, 34),
                 ),
@@ -431,20 +436,21 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
             onTap: () {
-              _loadInterstitialAd6();
+              
               Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => SaudiProLeaguePage(),
                 ),
               );
+              _loadInterstitialAd6();
             },
           ),
           ListTile(
             title: Row(
               children: [
-                Image.asset(
-                  "assets/images/euro cup.png",
+                Image.network(
+                  "https://res.cloudinary.com/dybvjvrib/image/upload/v1709786128/Soccer%20Point/League/euro_cup_clppft.png",
                   width: 30,
                   color: Color.fromARGB(255, 1, 6, 34),
                 ),
@@ -453,20 +459,21 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
             onTap: () {
-              _loadInterstitialAd7();
+              
               Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => EuroPage(),
                 ),
               );
+              _loadInterstitialAd7();
             },
           ),
           ListTile(
             title: Row(
               children: [
-                Image.asset(
-                  "assets/images/world cup.png",
+                Image.network(
+                  "https://res.cloudinary.com/dybvjvrib/image/upload/v1709786210/Soccer%20Point/League/world_cup_ouvwu9.png",
                   width: 30,
                   color: Color.fromARGB(255, 1, 6, 34),
                 ),
@@ -475,20 +482,21 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
             onTap: () {
-              _loadInterstitialAd8();
+              
               Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => WorldCupPage(),
                 ),
               );
+              _loadInterstitialAd8();
             },
           ),
           ListTile(
             title: Row(
               children: [
-                Image.asset(
-                  "assets/images/asean cup.png",
+                Image.network(
+                  "https://res.cloudinary.com/dybvjvrib/image/upload/v1709656283/Soccer%20Point/League/asean_cup_uaflkb.png",
                   width: 30,
                   color: Color.fromARGB(255, 1, 6, 34),
                 ),
@@ -497,20 +505,21 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
             onTap: () {
-              _loadInterstitialAd9();
+              
               Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => AseanCupPage(),
                 ),
               );
+              _loadInterstitialAd9();
             },
           ),
           ListTile(
             title: Row(
               children: [
-                Image.asset(
-                  "assets/images/asian cup.png",
+                Image.network(
+                  "https://res.cloudinary.com/dybvjvrib/image/upload/v1709786103/Soccer%20Point/League/asian_cup_dlzeiq.png",
                   width: 30,
                   color: Color.fromARGB(255, 1, 6, 34),
                 ),
@@ -519,13 +528,14 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
             onTap: () {
-              _loadInterstitialAd10();
+              
               Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => AsianCupPage(),
                 ),
               );
+              _loadInterstitialAd10();
             },
           ),
         ],

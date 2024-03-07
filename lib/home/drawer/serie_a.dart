@@ -81,8 +81,8 @@ class _SerieAPageState extends State<SerieAPage> {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Image.asset(
-                    "assets/images/serie a.png",
+                  Image.network(
+                    "https://res.cloudinary.com/dybvjvrib/image/upload/v1709785848/Soccer%20Point/League/20240307_112809_ihiuv4.png",
                     width: 70,
                     color: Colors.white,
                   ),
@@ -102,8 +102,8 @@ class _SerieAPageState extends State<SerieAPage> {
                       ),
                       Row(
                         children: [
-                          Image.asset(
-                            "assets/images/italia.png",
+                          Image.network(
+                            "https://res.cloudinary.com/dybvjvrib/image/upload/v1709657214/Soccer%20Point/International%20League/20240305_234510_wnbo3g.png",
                             width: 15,
                           ),
                           SizedBox(width: 8),

@@ -3,7 +3,7 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'home/bar_controller.dart';
+import 'onboarding.dart';
 
 AppOpenAd? appOpenAd;
 
@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Soccer Point',
-      home: BarController(),
+      home: OnBoarding(),
     );
   }
 }
