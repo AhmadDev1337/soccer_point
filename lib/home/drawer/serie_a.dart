@@ -1,6 +1,9 @@
 // ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, prefer_const_literals_to_create_immutables
 
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 import 'items serie a/classement.dart';
 import 'items serie a/timetable.dart';
@@ -15,6 +18,30 @@ class SerieAPage extends StatefulWidget {
 
 class _SerieAPageState extends State<SerieAPage> {
   int currentPageIndex = 0;
+  InterstitialAd? _interstitialAd;
+
+  void _loadInterstitialAd3() {
+    InterstitialAd.load(
+      adUnitId: 'ca-app-pub-8363980854824352/1663855240',
+      request: AdRequest(),
+      adLoadCallback: InterstitialAdLoadCallback(
+        onAdLoaded: (InterstitialAd ad) {
+          _interstitialAd = ad;
+          _interstitialAd!.show();
+          log('Ad onAdLoaded');
+        },
+        onAdFailedToLoad: (LoadAdError error) {
+          log('Interstitial ad failed to load: $error');
+        },
+      ),
+    );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _loadInterstitialAd3();
+  }
 
   final List<String> items = [
     "Timetable",
@@ -34,6 +61,7 @@ class _SerieAPageState extends State<SerieAPage> {
             children: [
               GestureDetector(
                 onTap: () {
+                  _loadInterstitialAd3();
                   Navigator.pop(context);
                 },
                 child: Container(

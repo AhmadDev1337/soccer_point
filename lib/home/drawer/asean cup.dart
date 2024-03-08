@@ -1,6 +1,9 @@
 // ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, prefer_const_literals_to_create_immutables, file_names
 
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 import 'items asean cup/classement.dart';
 import 'items asean cup/timetable.dart';
@@ -15,6 +18,30 @@ class AseanCupPage extends StatefulWidget {
 
 class _AseanCupPageState extends State<AseanCupPage> {
   int currentPageIndex = 0;
+  InterstitialAd? _interstitialAd;
+
+  void _loadInterstitialAd9() {
+    InterstitialAd.load(
+      adUnitId: 'ca-app-pub-8363980854824352/4098446892',
+      request: AdRequest(),
+      adLoadCallback: InterstitialAdLoadCallback(
+        onAdLoaded: (InterstitialAd ad) {
+          _interstitialAd = ad;
+          _interstitialAd!.show();
+          log('Ad onAdLoaded');
+        },
+        onAdFailedToLoad: (LoadAdError error) {
+          log('Interstitial ad failed to load: $error');
+        },
+      ),
+    );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _loadInterstitialAd9();
+  }
 
   final List<String> items = [
     "Timetable",
@@ -34,6 +61,7 @@ class _AseanCupPageState extends State<AseanCupPage> {
             children: [
               GestureDetector(
                 onTap: () {
+                  _loadInterstitialAd9();
                   Navigator.pop(context);
                 },
                 child: Container(

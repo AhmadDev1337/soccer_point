@@ -1,11 +1,9 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_element, unused_field, avoid_unnecessary_containers, sized_box_for_whitespace
 
 import 'dart:convert';
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:http/http.dart' as http;
 
 import 'drawer/asean cup.dart';
@@ -42,7 +40,6 @@ class LiveMatch {
 }
 
 class Matchs {
-  final String week;
   final String image1;
   final String team1;
   final String image2;
@@ -51,7 +48,6 @@ class Matchs {
   final String time;
 
   Matchs({
-    required this.week,
     required this.image1,
     required this.team1,
     required this.image2,
@@ -73,193 +69,12 @@ class _HomePageState extends State<HomePage> {
   List<LiveMatch> liveMatchList = [];
   List<Matchs> matchsList = [];
   bool isLoading = true;
-  InterstitialAd? _interstitialAd;
-
-  void _loadInterstitialAd1() {
-    InterstitialAd.load(
-      adUnitId: 'ca-app-pub-8363980854824352/1855426932',
-      request: AdRequest(),
-      adLoadCallback: InterstitialAdLoadCallback(
-        onAdLoaded: (InterstitialAd ad) {
-          _interstitialAd = ad;
-          _interstitialAd!.show();
-          log('Ad onAdLoaded');
-        },
-        onAdFailedToLoad: (LoadAdError error) {
-          log('Interstitial ad failed to load: $error');
-        },
-      ),
-    );
-  }
-
-  void _loadInterstitialAd2() {
-    InterstitialAd.load(
-      adUnitId: 'ca-app-pub-8363980854824352/2854697735',
-      request: AdRequest(),
-      adLoadCallback: InterstitialAdLoadCallback(
-        onAdLoaded: (InterstitialAd ad) {
-          _interstitialAd = ad;
-          _interstitialAd!.show();
-          log('Ad onAdLoaded');
-        },
-        onAdFailedToLoad: (LoadAdError error) {
-          log('Interstitial ad failed to load: $error');
-        },
-      ),
-    );
-  }
-
-  void _loadInterstitialAd3() {
-    InterstitialAd.load(
-      adUnitId: 'ca-app-pub-8363980854824352/1663855240',
-      request: AdRequest(),
-      adLoadCallback: InterstitialAdLoadCallback(
-        onAdLoaded: (InterstitialAd ad) {
-          _interstitialAd = ad;
-          _interstitialAd!.show();
-          log('Ad onAdLoaded');
-        },
-        onAdFailedToLoad: (LoadAdError error) {
-          log('Interstitial ad failed to load: $error');
-        },
-      ),
-    );
-  }
-
-  void _loadInterstitialAd4() {
-    InterstitialAd.load(
-      adUnitId: 'ca-app-pub-8363980854824352/1173487389',
-      request: AdRequest(),
-      adLoadCallback: InterstitialAdLoadCallback(
-        onAdLoaded: (InterstitialAd ad) {
-          _interstitialAd = ad;
-          _interstitialAd!.show();
-          log('Ad onAdLoaded');
-        },
-        onAdFailedToLoad: (LoadAdError error) {
-          log('Interstitial ad failed to load: $error');
-        },
-      ),
-    );
-  }
-
-  void _loadInterstitialAd5() {
-    InterstitialAd.load(
-      adUnitId: 'ca-app-pub-8363980854824352/6581726738',
-      request: AdRequest(),
-      adLoadCallback: InterstitialAdLoadCallback(
-        onAdLoaded: (InterstitialAd ad) {
-          _interstitialAd = ad;
-          _interstitialAd!.show();
-          log('Ad onAdLoaded');
-        },
-        onAdFailedToLoad: (LoadAdError error) {
-          log('Interstitial ad failed to load: $error');
-        },
-      ),
-    );
-  }
-
-  void _loadInterstitialAd6() {
-    InterstitialAd.load(
-      adUnitId: 'ca-app-pub-8363980854824352/8860405719',
-      request: AdRequest(),
-      adLoadCallback: InterstitialAdLoadCallback(
-        onAdLoaded: (InterstitialAd ad) {
-          _interstitialAd = ad;
-          _interstitialAd!.show();
-          log('Ad onAdLoaded');
-        },
-        onAdFailedToLoad: (LoadAdError error) {
-          log('Interstitial ad failed to load: $error');
-        },
-      ),
-    );
-  }
-
-  void _loadInterstitialAd7() {
-    InterstitialAd.load(
-      adUnitId: 'ca-app-pub-8363980854824352/6390155049',
-      request: AdRequest(),
-      adLoadCallback: InterstitialAdLoadCallback(
-        onAdLoaded: (InterstitialAd ad) {
-          _interstitialAd = ad;
-          _interstitialAd!.show();
-          log('Ad onAdLoaded');
-        },
-        onAdFailedToLoad: (LoadAdError error) {
-          log('Interstitial ad failed to load: $error');
-        },
-      ),
-    );
-  }
-
-  void _loadInterstitialAd8() {
-    InterstitialAd.load(
-      adUnitId: 'ca-app-pub-8363980854824352/7244071711',
-      request: AdRequest(),
-      adLoadCallback: InterstitialAdLoadCallback(
-        onAdLoaded: (InterstitialAd ad) {
-          _interstitialAd = ad;
-          _interstitialAd!.show();
-          log('Ad onAdLoaded');
-        },
-        onAdFailedToLoad: (LoadAdError error) {
-          log('Interstitial ad failed to load: $error');
-        },
-      ),
-    );
-  }
-
-  void _loadInterstitialAd9() {
-    InterstitialAd.load(
-      adUnitId: 'ca-app-pub-8363980854824352/4098446892',
-      request: AdRequest(),
-      adLoadCallback: InterstitialAdLoadCallback(
-        onAdLoaded: (InterstitialAd ad) {
-          _interstitialAd = ad;
-          _interstitialAd!.show();
-          log('Ad onAdLoaded');
-        },
-        onAdFailedToLoad: (LoadAdError error) {
-          log('Interstitial ad failed to load: $error');
-        },
-      ),
-    );
-  }
-
-  void _loadInterstitialAd10() {
-    InterstitialAd.load(
-      adUnitId: 'ca-app-pub-8363980854824352/6234242374',
-      request: AdRequest(),
-      adLoadCallback: InterstitialAdLoadCallback(
-        onAdLoaded: (InterstitialAd ad) {
-          _interstitialAd = ad;
-          _interstitialAd!.show();
-          log('Ad onAdLoaded');
-        },
-        onAdFailedToLoad: (LoadAdError error) {
-          log('Interstitial ad failed to load: $error');
-        },
-      ),
-    );
-  }
 
   @override
   void initState() {
     super.initState();
     liveMatch();
     match();
-    _loadInterstitialAd1();
-    _loadInterstitialAd2();
-    _loadInterstitialAd3();
-    _loadInterstitialAd4();
-    _loadInterstitialAd5();
-    _loadInterstitialAd6();
-    _loadInterstitialAd7();
-    _loadInterstitialAd8();
-    _loadInterstitialAd9();
-    _loadInterstitialAd10();
   }
 
   void _openDrawer() {
@@ -321,14 +136,12 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
             onTap: () {
-              
               Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => LaligaPage(),
                 ),
               );
-              _loadInterstitialAd1();
             },
           ),
           ListTile(
@@ -344,14 +157,12 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
             onTap: () {
-              
               Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => PremierLeaguePage(),
                 ),
               );
-              _loadInterstitialAd2();
             },
           ),
           ListTile(
@@ -367,14 +178,12 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
             onTap: () {
-              
               Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => SerieAPage(),
                 ),
               );
-              _loadInterstitialAd3();
             },
           ),
           ListTile(
@@ -390,14 +199,12 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
             onTap: () {
-              
               Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => BundesligaPage(),
                 ),
               );
-              _loadInterstitialAd4();
             },
           ),
           ListTile(
@@ -413,14 +220,12 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
             onTap: () {
-              
               Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => UclPage(),
                 ),
               );
-              _loadInterstitialAd5();
             },
           ),
           ListTile(
@@ -436,14 +241,12 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
             onTap: () {
-              
               Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => SaudiProLeaguePage(),
                 ),
               );
-              _loadInterstitialAd6();
             },
           ),
           ListTile(
@@ -459,14 +262,12 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
             onTap: () {
-              
               Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => EuroPage(),
                 ),
               );
-              _loadInterstitialAd7();
             },
           ),
           ListTile(
@@ -482,14 +283,12 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
             onTap: () {
-              
               Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => WorldCupPage(),
                 ),
               );
-              _loadInterstitialAd8();
             },
           ),
           ListTile(
@@ -505,14 +304,12 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
             onTap: () {
-              
               Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => AseanCupPage(),
                 ),
               );
-              _loadInterstitialAd9();
             },
           ),
           ListTile(
@@ -524,18 +321,16 @@ class _HomePageState extends State<HomePage> {
                   color: Color.fromARGB(255, 1, 6, 34),
                 ),
                 SizedBox(width: 10),
-                Text('ASIAN Cup'),
+                Text('AFC Champions League'),
               ],
             ),
             onTap: () {
-              
               Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => AsianCupPage(),
                 ),
               );
-              _loadInterstitialAd10();
             },
           ),
         ],
@@ -595,7 +390,6 @@ class _HomePageState extends State<HomePage> {
         final matchs = json.decode(response.body);
         matchsList = matchs.map<Matchs>((data) {
           return Matchs(
-            week: data['week'],
             image1: data['image1'],
             team1: data['team1'],
             image2: data['image2'],

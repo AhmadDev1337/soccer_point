@@ -1,6 +1,9 @@
 // ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, prefer_const_literals_to_create_immutables
 
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 import 'items ucl/classement.dart';
 import 'items ucl/timetable.dart';
@@ -15,6 +18,30 @@ class UclPage extends StatefulWidget {
 
 class _UclPageState extends State<UclPage> {
   int currentPageIndex = 0;
+  InterstitialAd? _interstitialAd;
+
+  void _loadInterstitialAd5() {
+    InterstitialAd.load(
+      adUnitId: 'ca-app-pub-8363980854824352/6581726738',
+      request: AdRequest(),
+      adLoadCallback: InterstitialAdLoadCallback(
+        onAdLoaded: (InterstitialAd ad) {
+          _interstitialAd = ad;
+          _interstitialAd!.show();
+          log('Ad onAdLoaded');
+        },
+        onAdFailedToLoad: (LoadAdError error) {
+          log('Interstitial ad failed to load: $error');
+        },
+      ),
+    );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _loadInterstitialAd5();
+  }
 
   final List<String> items = [
     "Timetable",
@@ -34,6 +61,7 @@ class _UclPageState extends State<UclPage> {
             children: [
               GestureDetector(
                 onTap: () {
+                  _loadInterstitialAd5();
                   Navigator.pop(context);
                 },
                 child: Container(

@@ -1,6 +1,9 @@
 // ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, prefer_const_literals_to_create_immutables
 
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 import 'items bundesliga/classement.dart';
 import 'items bundesliga/timetable.dart';
@@ -15,6 +18,30 @@ class BundesligaPage extends StatefulWidget {
 
 class _BundesligaPageState extends State<BundesligaPage> {
   int currentPageIndex = 0;
+  InterstitialAd? _interstitialAd;
+
+  void _loadInterstitialAd4() {
+    InterstitialAd.load(
+      adUnitId: 'ca-app-pub-8363980854824352/1173487389',
+      request: AdRequest(),
+      adLoadCallback: InterstitialAdLoadCallback(
+        onAdLoaded: (InterstitialAd ad) {
+          _interstitialAd = ad;
+          _interstitialAd!.show();
+          log('Ad onAdLoaded');
+        },
+        onAdFailedToLoad: (LoadAdError error) {
+          log('Interstitial ad failed to load: $error');
+        },
+      ),
+    );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _loadInterstitialAd4();
+  }
 
   final List<String> items = [
     "Timetable",
@@ -34,6 +61,7 @@ class _BundesligaPageState extends State<BundesligaPage> {
             children: [
               GestureDetector(
                 onTap: () {
+                  _loadInterstitialAd4();
                   Navigator.pop(context);
                 },
                 child: Container(

@@ -1,6 +1,9 @@
 // ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, prefer_const_literals_to_create_immutables
 
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 import 'items saudi pro league/classement.dart';
 import 'items saudi pro league/timetable.dart';
@@ -15,6 +18,30 @@ class SaudiProLeaguePage extends StatefulWidget {
 
 class _SaudiProLeaguePageState extends State<SaudiProLeaguePage> {
   int currentPageIndex = 0;
+  InterstitialAd? _interstitialAd;
+
+  void _loadInterstitialAd6() {
+    InterstitialAd.load(
+      adUnitId: 'ca-app-pub-8363980854824352/8860405719',
+      request: AdRequest(),
+      adLoadCallback: InterstitialAdLoadCallback(
+        onAdLoaded: (InterstitialAd ad) {
+          _interstitialAd = ad;
+          _interstitialAd!.show();
+          log('Ad onAdLoaded');
+        },
+        onAdFailedToLoad: (LoadAdError error) {
+          log('Interstitial ad failed to load: $error');
+        },
+      ),
+    );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _loadInterstitialAd6();
+  }
 
   final List<String> items = [
     "Timetable",
@@ -34,6 +61,7 @@ class _SaudiProLeaguePageState extends State<SaudiProLeaguePage> {
             children: [
               GestureDetector(
                 onTap: () {
+                  _loadInterstitialAd6();
                   Navigator.pop(context);
                 },
                 child: Container(

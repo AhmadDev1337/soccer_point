@@ -114,7 +114,7 @@ class _ClassementPageState extends State<ClassementPage> {
                                     TextStyle(fontSize: 13, color: Colors.grey),
                               ),
                               SizedBox(
-                                width: 25,
+                                width: 33,
                               ),
                               Text(
                                 "D",
@@ -122,7 +122,7 @@ class _ClassementPageState extends State<ClassementPage> {
                                     TextStyle(fontSize: 13, color: Colors.grey),
                               ),
                               SizedBox(
-                                width: 25,
+                                width: 33,
                               ),
                               Text(
                                 "L",

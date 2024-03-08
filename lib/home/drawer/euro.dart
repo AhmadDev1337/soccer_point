@@ -1,6 +1,9 @@
 // ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, prefer_const_literals_to_create_immutables
 
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 import 'items euro/classement.dart';
 import 'items euro/timetable.dart';
@@ -15,6 +18,30 @@ class EuroPage extends StatefulWidget {
 
 class _EuroPageState extends State<EuroPage> {
   int currentPageIndex = 0;
+  InterstitialAd? _interstitialAd;
+
+  void _loadInterstitialAd6() {
+    InterstitialAd.load(
+      adUnitId: 'ca-app-pub-8363980854824352/6390155049',
+      request: AdRequest(),
+      adLoadCallback: InterstitialAdLoadCallback(
+        onAdLoaded: (InterstitialAd ad) {
+          _interstitialAd = ad;
+          _interstitialAd!.show();
+          log('Ad onAdLoaded');
+        },
+        onAdFailedToLoad: (LoadAdError error) {
+          log('Interstitial ad failed to load: $error');
+        },
+      ),
+    );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _loadInterstitialAd6();
+  }
 
   final List<String> items = [
     "Timetable",
@@ -34,6 +61,7 @@ class _EuroPageState extends State<EuroPage> {
             children: [
               GestureDetector(
                 onTap: () {
+                  _loadInterstitialAd6();
                   Navigator.pop(context);
                 },
                 child: Container(
