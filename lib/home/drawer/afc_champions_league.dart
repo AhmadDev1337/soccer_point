@@ -5,24 +5,24 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
-import 'items serie a/classement.dart';
-import 'items serie a/timetable.dart';
-import 'items serie a/top_score.dart';
+import 'items afc champions league/classement.dart';
+import 'items afc champions league/timetable.dart';
+import 'items afc champions league/top_score.dart';
 
-class SerieAPage extends StatefulWidget {
-  const SerieAPage({super.key});
+class AFCPage extends StatefulWidget {
+  const AFCPage({super.key});
 
   @override
-  State<SerieAPage> createState() => _SerieAPageState();
+  State<AFCPage> createState() => _AFCPageState();
 }
 
-class _SerieAPageState extends State<SerieAPage> {
+class _AFCPageState extends State<AFCPage> {
   int currentPageIndex = 0;
   InterstitialAd? _interstitialAd;
 
-  void _loadInterstitialAd3() {
+  void _loadInterstitialAd11() {
     InterstitialAd.load(
-      adUnitId: 'ca-app-pub-8363980854824352/1663855240',
+      adUnitId: 'ca-app-pub-8363980854824352/1842629277',
       request: AdRequest(),
       adLoadCallback: InterstitialAdLoadCallback(
         onAdLoaded: (InterstitialAd ad) {
@@ -35,6 +35,12 @@ class _SerieAPageState extends State<SerieAPage> {
         },
       ),
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _loadInterstitialAd11();
   }
 
   final List<String> items = [
@@ -55,7 +61,7 @@ class _SerieAPageState extends State<SerieAPage> {
             children: [
               GestureDetector(
                 onTap: () {
-                  _loadInterstitialAd3();
+                  _loadInterstitialAd11();
                   Navigator.pop(context);
                 },
                 child: Container(
@@ -104,7 +110,7 @@ class _SerieAPageState extends State<SerieAPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Image.network(
-                    "https://res.cloudinary.com/dybvjvrib/image/upload/v1709785848/Soccer%20Point/League/20240307_112809_ihiuv4.png",
+                    "https://res.cloudinary.com/dybvjvrib/image/upload/v1709965906/Soccer%20Point/League/value_rm2ruu.png",
                     width: 70,
                     color: Colors.white,
                   ),
@@ -113,7 +119,7 @@ class _SerieAPageState extends State<SerieAPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Serie A",
+                        "AFC Champions League",
                         style: TextStyle(
                             fontWeight: FontWeight.w700,
                             fontSize: 15,
@@ -125,12 +131,12 @@ class _SerieAPageState extends State<SerieAPage> {
                       Row(
                         children: [
                           Image.network(
-                            "https://res.cloudinary.com/dybvjvrib/image/upload/v1709657214/Soccer%20Point/International%20League/20240305_234510_wnbo3g.png",
+                            "https://res.cloudinary.com/dybvjvrib/image/upload/v1709786849/Soccer%20Point/International%20League/international-1751293_1280_llsnyi.png",
                             width: 15,
                           ),
                           SizedBox(width: 8),
                           Text(
-                            "Italia",
+                            "Asia",
                             style: TextStyle(color: Colors.white),
                           ),
                         ],

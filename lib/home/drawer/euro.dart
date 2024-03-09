@@ -20,7 +20,7 @@ class _EuroPageState extends State<EuroPage> {
   int currentPageIndex = 0;
   InterstitialAd? _interstitialAd;
 
-  void _loadInterstitialAd6() {
+  void _loadInterstitialAd7() {
     InterstitialAd.load(
       adUnitId: 'ca-app-pub-8363980854824352/6390155049',
       request: AdRequest(),
@@ -40,7 +40,7 @@ class _EuroPageState extends State<EuroPage> {
   @override
   void initState() {
     super.initState();
-    _loadInterstitialAd6();
+    _loadInterstitialAd7();
   }
 
   final List<String> items = [
@@ -61,7 +61,7 @@ class _EuroPageState extends State<EuroPage> {
             children: [
               GestureDetector(
                 onTap: () {
-                  _loadInterstitialAd6();
+                  _loadInterstitialAd7();
                   Navigator.pop(context);
                 },
                 child: Container(

@@ -32,7 +32,7 @@ class _TopScorePageState extends State<TopScorePage> {
   bool isLoading = true;
 
   Future<void> match() async {
-    const singleJsonUrl = "https://pastebin.com/raw/2SvLeYS3";
+    const singleJsonUrl = "https://pastebin.com/raw/zFjac0fU";
 
     try {
       final response = await http.get(Uri.parse(singleJsonUrl));
@@ -133,6 +133,66 @@ class _TopScorePageState extends State<TopScorePage> {
                   );
                 }).toList(),
               ),
+              // Padding(
+              //   padding: EdgeInsets.symmetric(horizontal: 15),
+              //   child: Row(
+              //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //     children: [
+              //       Column(
+              //         children: [
+              //           Text(
+              //             "Player",
+              //             style: TextStyle(fontSize: 13, color: Colors.grey),
+              //           ),
+              //           SizedBox(height: 15),
+              //           Column(
+              //             crossAxisAlignment: CrossAxisAlignment.start,
+              //             children: matchsList.map((matchs) {
+              //               return Padding(
+              //                 padding: EdgeInsets.only(bottom: 10),
+              //                 child: Row(
+              //                   children: [
+              //                     Image.network(matchs.image1, width: 20),
+              //                     SizedBox(width: 5),
+              //                     Image.network(matchs.image2, width: 20),
+              //                     SizedBox(width: 10),
+              //                     Text(
+              //                       matchs.player,
+              //                       style: TextStyle(
+              //                           fontSize: 13, color: Colors.grey),
+              //                     ),
+              //                   ],
+              //                 ),
+              //               );
+              //             }).toList(),
+              //           ),
+              //         ],
+              //       ),
+              //       Column(
+              //         children: [
+              //           Text(
+              //             "Goal",
+              //             style: TextStyle(fontSize: 13, color: Colors.grey),
+              //           ),
+              //           SizedBox(height: 15),
+              //           Column(
+              //             crossAxisAlignment: CrossAxisAlignment.start,
+              //             children: matchsList.map((matchs) {
+              //               return Padding(
+              //                 padding: EdgeInsets.only(bottom: 10),
+              //                 child: Text(
+              //                   matchs.goal,
+              //                   style:
+              //                       TextStyle(fontSize: 13, color: Colors.grey),
+              //                 ),
+              //               );
+              //             }).toList(),
+              //           ),
+              //         ],
+              //       ),
+              //     ],
+              //   ),
+              // ),
             ],
           );
   }

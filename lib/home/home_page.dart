@@ -6,8 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:http/http.dart' as http;
 
+import 'drawer/afc_champions_league.dart';
 import 'drawer/asean cup.dart';
-import 'drawer/asian_cup.dart';
+import 'drawer/asian cup.dart';
 import 'drawer/bundesliga.dart';
 import 'drawer/euro.dart';
 import 'drawer/laliga.dart';
@@ -85,256 +86,284 @@ class _HomePageState extends State<HomePage> {
     return Drawer(
       shadowColor: Colors.grey,
       width: MediaQuery.of(context).size.width * 0.7,
-      child: ListView(
-        padding: EdgeInsets.zero,
-        children: [
-          Container(
-            height: MediaQuery.of(context).size.height * 0.3,
-            child: Stack(
-              fit: StackFit.expand,
+      child: isLoading
+          ? Center(
+              child: SpinKitWave(
+                color: Color(0xff1e90ff),
+                size: 25,
+              ),
+            )
+          : ListView(
+              padding: EdgeInsets.zero,
               children: [
-                Image.network(
-                  "https://res.cloudinary.com/dybvjvrib/image/upload/v1709786182/Soccer%20Point/League/images_1_dqzjbn.jpg",
-                  fit: BoxFit.fill,
-                ),
                 Container(
-                  height: double.infinity,
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.bottomCenter,
-                      end: Alignment.topCenter,
-                      colors: [
-                        Color.fromARGB(255, 1, 6, 34),
-                        Color.fromARGB(255, 1, 6, 34).withOpacity(0.6),
-                      ],
-                    ),
+                  height: MediaQuery.of(context).size.height * 0.3,
+                  child: Stack(
+                    fit: StackFit.expand,
+                    children: [
+                      Image.network(
+                        "https://res.cloudinary.com/dybvjvrib/image/upload/v1709786182/Soccer%20Point/League/images_1_dqzjbn.jpg",
+                        fit: BoxFit.fill,
+                      ),
+                      Container(
+                        height: double.infinity,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            begin: Alignment.bottomCenter,
+                            end: Alignment.topCenter,
+                            colors: [
+                              Color.fromARGB(255, 1, 6, 34),
+                              Color.fromARGB(255, 1, 6, 34).withOpacity(0.6),
+                            ],
+                          ),
+                        ),
+                        child: Center(
+                          child: Text(
+                            "Soccer Point",
+                            style: TextStyle(
+                                color: Colors.grey,
+                                fontWeight: FontWeight.w700,
+                                fontSize: 25),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                  child: Center(
-                    child: Text(
-                      "Soccer Point",
-                      style: TextStyle(
-                          color: Colors.grey,
-                          fontWeight: FontWeight.w700,
-                          fontSize: 25),
-                    ),
+                ),
+                ListTile(
+                  title: Row(
+                    children: [
+                      Image.network(
+                        "https://res.cloudinary.com/dybvjvrib/image/upload/v1709656292/Soccer%20Point/League/laliga_baqrya.png",
+                        width: 30,
+                        color: Color.fromARGB(255, 1, 6, 34),
+                      ),
+                      SizedBox(width: 10),
+                      Text('Laliga'),
+                    ],
                   ),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => LaligaPage(),
+                      ),
+                    );
+                  },
+                ),
+                ListTile(
+                  title: Row(
+                    children: [
+                      Image.network(
+                        "https://res.cloudinary.com/dybvjvrib/image/upload/v1709234584/Soccer%20Point/League/images-removebg-preview_1_jwr6tf.png",
+                        width: 30,
+                        color: Color.fromARGB(255, 1, 6, 34),
+                      ),
+                      SizedBox(width: 10),
+                      Text('Premier League'),
+                    ],
+                  ),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => PremierLeaguePage(),
+                      ),
+                    );
+                  },
+                ),
+                ListTile(
+                  title: Row(
+                    children: [
+                      Image.network(
+                        "https://res.cloudinary.com/dybvjvrib/image/upload/v1709785848/Soccer%20Point/League/20240307_112809_ihiuv4.png",
+                        color: Color.fromARGB(255, 1, 6, 34),
+                        width: 30,
+                      ),
+                      SizedBox(width: 10),
+                      Text('Serie A'),
+                    ],
+                  ),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => SerieAPage(),
+                      ),
+                    );
+                  },
+                ),
+                ListTile(
+                  title: Row(
+                    children: [
+                      Image.network(
+                        "https://res.cloudinary.com/dybvjvrib/image/upload/v1709234563/Soccer%20Point/League/bundesliga_tddsb4.png",
+                        width: 30,
+                        color: Color.fromARGB(255, 1, 6, 34),
+                      ),
+                      SizedBox(width: 10),
+                      Text('Bundesliga'),
+                    ],
+                  ),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => BundesligaPage(),
+                      ),
+                    );
+                  },
+                ),
+                ListTile(
+                  title: Row(
+                    children: [
+                      Image.network(
+                        "https://res.cloudinary.com/dybvjvrib/image/upload/v1709656287/Soccer%20Point/League/ucl_r0kjw1.png",
+                        width: 30,
+                        color: Color.fromARGB(255, 1, 6, 34),
+                      ),
+                      SizedBox(width: 10),
+                      Text('UCL'),
+                    ],
+                  ),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => UclPage(),
+                      ),
+                    );
+                  },
+                ),
+                ListTile(
+                  title: Row(
+                    children: [
+                      Image.network(
+                        "https://res.cloudinary.com/dybvjvrib/image/upload/v1709234560/Soccer%20Point/League/asl_mhzcg7.png",
+                        width: 30,
+                        color: Color.fromARGB(255, 1, 6, 34),
+                      ),
+                      SizedBox(width: 10),
+                      Text('Saudi Pro League'),
+                    ],
+                  ),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => SaudiProLeaguePage(),
+                      ),
+                    );
+                  },
+                ),
+                ListTile(
+                  title: Row(
+                    children: [
+                      Image.network(
+                        "https://res.cloudinary.com/dybvjvrib/image/upload/v1709965906/Soccer%20Point/League/value_rm2ruu.png",
+                        width: 30,
+                        color: Color.fromARGB(255, 1, 6, 34),
+                      ),
+                      SizedBox(width: 10),
+                      Text('AFC Champions League'),
+                    ],
+                  ),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => AFCPage(),
+                      ),
+                    );
+                  },
+                ),
+                ListTile(
+                  title: Row(
+                    children: [
+                      Image.network(
+                        "https://res.cloudinary.com/dybvjvrib/image/upload/v1709786128/Soccer%20Point/League/euro_cup_clppft.png",
+                        width: 30,
+                        color: Color.fromARGB(255, 1, 6, 34),
+                      ),
+                      SizedBox(width: 10),
+                      Text('EURO'),
+                    ],
+                  ),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => EuroPage(),
+                      ),
+                    );
+                  },
+                ),
+                ListTile(
+                  title: Row(
+                    children: [
+                      Image.network(
+                        "https://res.cloudinary.com/dybvjvrib/image/upload/v1709786210/Soccer%20Point/League/world_cup_ouvwu9.png",
+                        width: 30,
+                        color: Color.fromARGB(255, 1, 6, 34),
+                      ),
+                      SizedBox(width: 10),
+                      Text('WORLD Cup'),
+                    ],
+                  ),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => WorldCupPage(),
+                      ),
+                    );
+                  },
+                ),
+                ListTile(
+                  title: Row(
+                    children: [
+                      Image.network(
+                        "https://res.cloudinary.com/dybvjvrib/image/upload/v1709656283/Soccer%20Point/League/asean_cup_uaflkb.png",
+                        width: 30,
+                        color: Color.fromARGB(255, 1, 6, 34),
+                      ),
+                      SizedBox(width: 10),
+                      Text('ASEAN Cup'),
+                    ],
+                  ),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => AseanCupPage(),
+                      ),
+                    );
+                  },
+                ),
+                ListTile(
+                  title: Row(
+                    children: [
+                      Image.network(
+                        "https://res.cloudinary.com/dybvjvrib/image/upload/v1709786103/Soccer%20Point/League/asian_cup_dlzeiq.png",
+                        width: 30,
+                        color: Color.fromARGB(255, 1, 6, 34),
+                      ),
+                      SizedBox(width: 10),
+                      Text('ASIAN Cup'),
+                    ],
+                  ),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => AsianCupPage(),
+                      ),
+                    );
+                  },
                 ),
               ],
             ),
-          ),
-          ListTile(
-            title: Row(
-              children: [
-                Image.network(
-                  "https://res.cloudinary.com/dybvjvrib/image/upload/v1709656292/Soccer%20Point/League/laliga_baqrya.png",
-                  width: 30,
-                  color: Color.fromARGB(255, 1, 6, 34),
-                ),
-                SizedBox(width: 10),
-                Text('Laliga'),
-              ],
-            ),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => LaligaPage(),
-                ),
-              );
-            },
-          ),
-          ListTile(
-            title: Row(
-              children: [
-                Image.network(
-                  "https://res.cloudinary.com/dybvjvrib/image/upload/v1709234584/Soccer%20Point/League/images-removebg-preview_1_jwr6tf.png",
-                  width: 30,
-                  color: Color.fromARGB(255, 1, 6, 34),
-                ),
-                SizedBox(width: 10),
-                Text('Premier League'),
-              ],
-            ),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => PremierLeaguePage(),
-                ),
-              );
-            },
-          ),
-          ListTile(
-            title: Row(
-              children: [
-                Image.network(
-                  "https://res.cloudinary.com/dybvjvrib/image/upload/v1709785848/Soccer%20Point/League/20240307_112809_ihiuv4.png",
-                  color: Color.fromARGB(255, 1, 6, 34),
-                  width: 30,
-                ),
-                SizedBox(width: 10),
-                Text('Serie A'),
-              ],
-            ),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => SerieAPage(),
-                ),
-              );
-            },
-          ),
-          ListTile(
-            title: Row(
-              children: [
-                Image.network(
-                  "https://res.cloudinary.com/dybvjvrib/image/upload/v1709234563/Soccer%20Point/League/bundesliga_tddsb4.png",
-                  width: 30,
-                  color: Color.fromARGB(255, 1, 6, 34),
-                ),
-                SizedBox(width: 10),
-                Text('Bundesliga'),
-              ],
-            ),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => BundesligaPage(),
-                ),
-              );
-            },
-          ),
-          ListTile(
-            title: Row(
-              children: [
-                Image.network(
-                  "https://res.cloudinary.com/dybvjvrib/image/upload/v1709656287/Soccer%20Point/League/ucl_r0kjw1.png",
-                  width: 30,
-                  color: Color.fromARGB(255, 1, 6, 34),
-                ),
-                SizedBox(width: 10),
-                Text('UCL'),
-              ],
-            ),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => UclPage(),
-                ),
-              );
-            },
-          ),
-          ListTile(
-            title: Row(
-              children: [
-                Image.network(
-                  "https://res.cloudinary.com/dybvjvrib/image/upload/v1709234560/Soccer%20Point/League/asl_mhzcg7.png",
-                  width: 30,
-                  color: Color.fromARGB(255, 1, 6, 34),
-                ),
-                SizedBox(width: 10),
-                Text('Saudi Pro League'),
-              ],
-            ),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => SaudiProLeaguePage(),
-                ),
-              );
-            },
-          ),
-          ListTile(
-            title: Row(
-              children: [
-                Image.network(
-                  "https://res.cloudinary.com/dybvjvrib/image/upload/v1709786128/Soccer%20Point/League/euro_cup_clppft.png",
-                  width: 30,
-                  color: Color.fromARGB(255, 1, 6, 34),
-                ),
-                SizedBox(width: 10),
-                Text('EURO'),
-              ],
-            ),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => EuroPage(),
-                ),
-              );
-            },
-          ),
-          ListTile(
-            title: Row(
-              children: [
-                Image.network(
-                  "https://res.cloudinary.com/dybvjvrib/image/upload/v1709786210/Soccer%20Point/League/world_cup_ouvwu9.png",
-                  width: 30,
-                  color: Color.fromARGB(255, 1, 6, 34),
-                ),
-                SizedBox(width: 10),
-                Text('WORLD Cup'),
-              ],
-            ),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => WorldCupPage(),
-                ),
-              );
-            },
-          ),
-          ListTile(
-            title: Row(
-              children: [
-                Image.network(
-                  "https://res.cloudinary.com/dybvjvrib/image/upload/v1709656283/Soccer%20Point/League/asean_cup_uaflkb.png",
-                  width: 30,
-                  color: Color.fromARGB(255, 1, 6, 34),
-                ),
-                SizedBox(width: 10),
-                Text('ASEAN Cup'),
-              ],
-            ),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => AseanCupPage(),
-                ),
-              );
-            },
-          ),
-          ListTile(
-            title: Row(
-              children: [
-                Image.network(
-                  "https://res.cloudinary.com/dybvjvrib/image/upload/v1709786103/Soccer%20Point/League/asian_cup_dlzeiq.png",
-                  width: 30,
-                  color: Color.fromARGB(255, 1, 6, 34),
-                ),
-                SizedBox(width: 10),
-                Text('AFC Champions League'),
-              ],
-            ),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => AsianCupPage(),
-                ),
-              );
-            },
-          ),
-        ],
-      ),
     );
   }
 

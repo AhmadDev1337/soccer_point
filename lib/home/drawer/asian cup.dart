@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, prefer_const_literals_to_create_immutables, file_names
 
 import 'dart:developer';
 
@@ -22,7 +22,7 @@ class _AsianCupPageState extends State<AsianCupPage> {
 
   void _loadInterstitialAd10() {
     InterstitialAd.load(
-      adUnitId: 'ca-app-pub-8363980854824352/6390155049',
+      adUnitId: 'ca-app-pub-8363980854824352/6234242374',
       request: AdRequest(),
       adLoadCallback: InterstitialAdLoadCallback(
         onAdLoaded: (InterstitialAd ad) {
