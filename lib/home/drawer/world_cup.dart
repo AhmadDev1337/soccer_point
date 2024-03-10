@@ -91,7 +91,7 @@ class _WorldCupPageState extends State<WorldCupPage> {
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Text(
-                  "2023 - 24",
+                  "20-- - --",
                   style: TextStyle(color: Colors.white, fontSize: 10),
                 ),
               ),
